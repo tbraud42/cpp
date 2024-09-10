@@ -6,7 +6,7 @@
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:30:41 by tbraud            #+#    #+#             */
-/*   Updated: 2024/09/09 16:38:06 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/09/10 19:39:13 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,28 @@
 int main(int ac, char **av)
 {
 	int	i;
-	
+
 	if (ac == 1)
 	{
-		std::count << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
-	i = 0;
+	i = 1;
 	while (av[i] && av[i][0] == '\0')
 		i++;
 	if (i == ac)
 	{
-		std::count << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return 0;
 	}
-	while (av[i])
+	for (int k = i; k < ac; k++)
 	{
-		std::count << av[i];
-		i++;
+		if (av[k][0])
+		{
+			for (int j = 0; av[k][j]; j++)
+				std::cout << (char)std::toupper(av[k][j]);
+		}
 	}
+	std::cout << std::endl;
 	return 0;
 }

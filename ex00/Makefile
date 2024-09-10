@@ -6,13 +6,12 @@
 #    By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2024/09/09 14:45:06 by tbraud           ###   ########.fr        #
+#    Updated: 2024/09/10 19:24:07 by tbraud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= megaphone
 
-SRC_DIR	:= src
 OBJ_DIR	:= obj
 
 CC		:= c++
@@ -20,7 +19,8 @@ CFLAGS	:= -Wextra -Wall -Werror -std=c++98
 
 INCLUDE	:= -I ./include
 
-SRC		:= 
+SRC		:= megaphone.cpp \
+
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 GREEN	:= \033[1;32m
@@ -29,9 +29,9 @@ NC		:= \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) -o $(NAME) && printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) && printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC)
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(INCLUDE) && printf "$(GREEN)✔️ $(notdir $<)$(NC) compiled\n"
 
