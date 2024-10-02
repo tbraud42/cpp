@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 22:16:13 by tao               #+#    #+#             */
-/*   Updated: 2024/10/02 22:17:40 by tbraud           ###   ########.fr       */
+/*   Created: 2024/10/02 21:30:36 by tbraud            #+#    #+#             */
+/*   Updated: 2024/10/02 22:18:48 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-# include <iostream>
-# include <stdlib.h>
-# include <sys/wait.h>
-# include <cstring>
-# include "Contact.hpp"
-
-class PhoneBook {
+class Contact {
 
 public :
 
-	PhoneBook(void);
-	~PhoneBook(void);
-	void ft_add(void);
-	void ft_search(void);
+	Contact(void);
+	~Contact(void);
+	void SetInfo(std::string info[5]);
 
 private :
 
-	Contact _info[8]; // mmmmh burger king
-	int		_index; //init constructor
+	std::string _info[5];
+	
 };
 
 #endif
