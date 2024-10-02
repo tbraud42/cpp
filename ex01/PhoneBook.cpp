@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:21:36 by tao               #+#    #+#             */
-/*   Updated: 2024/10/02 15:21:29 by tao              ###   ########.fr       */
+/*   Updated: 2024/10/02 15:54:17 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	PhoneBook::ft_add(void) {
 		std::cout << "do you want to add another contact? y/n" << std::endl;
 		std::cin >> info;
 		for (int j = 0; info[j]; j++)
-			std::cout << (char)std::toupper(info[j]);
+			std::toupper(info[j]);
 		if (info.compare("Y") == 0 || info.compare("YES") == 0) {
 			this->ft_add();
 			return ;
