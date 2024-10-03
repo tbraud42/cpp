@@ -6,7 +6,7 @@
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:16:13 by tao               #+#    #+#             */
-/*   Updated: 2024/10/02 22:17:40 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/10/03 00:23:00 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ private :
 
 	Contact _info[8]; // mmmmh burger king
 	int		_index; //init constructor
+
 };
 
 #endif

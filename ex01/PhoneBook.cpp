@@ -6,7 +6,7 @@
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:21:36 by tao               #+#    #+#             */
-/*   Updated: 2024/10/02 22:30:14 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/10/03 02:15:15 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ Contact::Contact(void) {
 
 Contact::~Contact(void) {
 	return ;
+}
+
+std::string *GetInfo(void) {
+	return (this->_info);
 }
 
 void	Contact::SetInfo(std::string info[5]) {
@@ -53,14 +57,6 @@ void	ft_print_header(int i) {
 		std::cout << "|               PHONE BOOK                |" << std::endl;
 		std::cout << "|            SI SI LA FAMILLE             |" << std::endl;
 		std::cout << "|                MODE ADD                 |" << std::endl;
-		std::cout << "|              brevet deposé              |" << std::endl;
-		std::cout << "'-----------------------------------------'" << std::endl;
-	}
-	else if (i == 2) {
-		std::cout << ",-----------------------------------------," << std::endl;
-		std::cout << "|               PHONE BOOK                |" << std::endl;
-		std::cout << "|            SI SI LA FAMILLE             |" << std::endl;
-		std::cout << "|                MODE SEARCH              |" << std::endl;
 		std::cout << "|              brevet deposé              |" << std::endl;
 		std::cout << "'-----------------------------------------'" << std::endl;
 	}
@@ -106,8 +102,25 @@ void	PhoneBook::ft_add(void) {
 	}
 }
 
+int	ft_print_search(std::string info[5]) {
+	// tab tronc et tout le tralala
+}
+
 void	PhoneBook::ft_search() {
-	return ;
+	std::string input;
+	int	i = 0;
+	
+	system("clear");
+	std::cout << ",-----------------------------------------," << std::endl;
+	while (i < 8) {
+		if (ft_print_search(this->_info[i].GetInfo()))
+			break ;	
+		i++;
+	}
+	std::cout << "'-----------------------------------------'" << std::endl;
+	std::cout << "which contact would you like to see" << std::endl;
+	std::cin >> input;
+	
 }
 
 int	main(void) {
@@ -124,10 +137,6 @@ int	main(void) {
 			contact.ft_search(); // suce mon enorme queue
 		else if (decision.compare("EXIT") == 0)
 			return (0);
-		else { // doute ,  c'est mieux sans ?
-			std::cout << "impossible request" << std::endl;
-			usleep(600000);
-		}
 	}
 	return 0;
 }
