@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:21:36 by tao               #+#    #+#             */
-/*   Updated: 2024/10/03 02:15:15 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/10/04 20:36:26 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Contact::~Contact(void) {
 	return ;
 }
 
-std::string *GetInfo(void) {
+std::string *Contact::GetInfo(void) {
 	return (this->_info);
 }
 
@@ -62,7 +62,7 @@ void	ft_print_header(int i) {
 	}
 }
 
-void	PhoneBook::ft_add(void) {
+void	PhoneBook::ft_add(void) { // rajouter case vide test
 	std::string info[5];
 	std::string input;
 
@@ -81,7 +81,7 @@ void	PhoneBook::ft_add(void) {
 	ft_print_header(1);
 	std::cout << "darkest secret" << std::endl;
 	std::cin >> info[4];
-	this->_info[this->_index].SetInfo(info);	
+	this->_info[this->_index].SetInfo(info);
 	this->_index++;
 	if (this->_index == 8)
 		this->_index = 0;
@@ -102,25 +102,54 @@ void	PhoneBook::ft_add(void) {
 	}
 }
 
-int	ft_print_search(std::string info[5]) {
-	// tab tronc et tout le tralala
+int	ft_print_search(int i, std::string info[5]) {
+
+	if (!info[0][0])
+		return (1);
+	std::cout << "|" << std::setw(10);// trouver fonction de trunc
+	std::cout << "num";
+	(void)i;
+	// std::cout << itoa(i, NULL, 10);
+	std::cout << "|" << std::setw(10);
+	std::cout << info[0];
+	std::cout << "|" << std::setw(10);
+	std::cout << info[1];
+	std::cout << "|" << std::setw(10);
+	std::cout << info[2];
+	std::cout << "|" << std::endl;
+	return (0);
+}
+
+void	ft_contact_empty(void) {
+	std::string input;
+
+	system("clear");
+	std::cout << ",---------------------------------------," << std::endl;
+	std::cout << "|    you have no registered contacts    |" << std::endl;
+	std::cout << "'---------------------------------------'" << std::endl;
+	std::cout << "write anything to return to main menu :";
+	std::cin >> input;
 }
 
 void	PhoneBook::ft_search() {
 	std::string input;
 	int	i = 0;
-	
+
+	if (!this->_info[0].GetInfo()[0][0]) {
+		ft_contact_empty();
+		return ;
+	}
 	system("clear");
-	std::cout << ",-----------------------------------------," << std::endl;
+	std::cout << ",-------------------------------------------," << std::endl;
 	while (i < 8) {
-		if (ft_print_search(this->_info[i].GetInfo()))
-			break ;	
+		if (ft_print_search(i, this->_info[i].GetInfo()))
+			break ;
 		i++;
 	}
-	std::cout << "'-----------------------------------------'" << std::endl;
+	std::cout << "'-------------------------------------------'" << std::endl;
 	std::cout << "which contact would you like to see" << std::endl;
 	std::cin >> input;
-	
+	// choisir qui afficher
 }
 
 int	main(void) {
@@ -134,9 +163,10 @@ int	main(void) {
 		if (decision.compare("ADD") == 0)
 			contact.ft_add();
 		else if (decision.compare("SEARCH") == 0)
-			contact.ft_search(); // suce mon enorme queue
+			contact.ft_search();
 		else if (decision.compare("EXIT") == 0)
 			return (0);
 	}
 	return 0;
 }
+

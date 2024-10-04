@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 21:30:36 by tbraud            #+#    #+#             */
-/*   Updated: 2024/10/03 01:16:38 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/10/04 19:53:42 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ public :
 
 private :
 
-	std::string _info[5];
-	
+	std::string _info[5]; // first_name, last_name, nikname, phone_number, darkest secret
+
 };
 
 #endif

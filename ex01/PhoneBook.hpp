@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:16:13 by tao               #+#    #+#             */
-/*   Updated: 2024/10/03 00:23:00 by tbraud           ###   ########.fr       */
+/*   Updated: 2024/10/04 20:29:43 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
-# include <stdlib.h>
-# include <sys/wait.h>
-# include <cstring>
+// # include <sys/wait.h>
+# include <cstring> /* string */
+# include <iomanip> /* setw */
+# include <stdlib.h> /* itoa */
+# include <stdio.h>
 # include "Contact.hpp"
 
 class PhoneBook {
