@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 21:30:36 by tbraud            #+#    #+#             */
-/*   Updated: 2024/10/04 22:42:31 by tao              ###   ########.fr       */
+/*   Created: 2024/10/04 23:03:36 by tao               #+#    #+#             */
+/*   Updated: 2024/10/04 23:04:28 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#include "PhoneBook.hpp"
 
-class Contact {
+Contact::Contact(void) {
+	return ;
+}
 
-public :
+Contact::~Contact(void) {
+	return ;
+}
 
-	Contact(void);
-	~Contact(void);
-	std::string *GetContact(void);
-	void SetInfo(std::string info[5]);
+std::string *Contact::GetContact(void) {
+	return (this->_info);
+}
 
-private :
-
-	std::string _info[5]; // first_name, last_name, nikname, phone_number, darkest secret
-
-};
-
-#endif
+void	Contact::SetInfo(std::string info[5]) {
+	this->_info[0] = info[0];
+	this->_info[1] = info[1];
+	this->_info[2] = info[2];
+	this->_info[3] = info[3];
+	this->_info[4] = info[4];
+}

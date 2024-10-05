@@ -6,7 +6,7 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2024/10/02 02:46:45 by tao              ###   ########.fr        #
+#    Updated: 2024/10/04 23:05:32 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR	:= obj
 CC		:= c++
 CFLAGS	:= -Wextra -Wall -Werror -std=c++98
 
-SRC		:= PhoneBook.cpp \
+SRC		:= PhoneBook.cpp Contact.cpp \
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

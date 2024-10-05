@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:16:13 by tao               #+#    #+#             */
-/*   Updated: 2024/10/04 20:29:43 by tao              ###   ########.fr       */
+/*   Updated: 2024/10/04 22:57:00 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 // # include <sys/wait.h>
 # include <cstring> /* string */
 # include <iomanip> /* setw */
-# include <stdlib.h> /* itoa */
-# include <stdio.h>
+# include <cstdlib> /* itoa atoi */
 # include "Contact.hpp"
 
 class PhoneBook {
@@ -29,6 +28,7 @@ public :
 	~PhoneBook(void);
 	void ft_add(void);
 	void ft_search(void);
+	Contact *GetPhoneBook(void);
 
 private :
 
