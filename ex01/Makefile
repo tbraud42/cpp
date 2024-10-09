@@ -6,7 +6,7 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2024/10/04 23:05:32 by tao              ###   ########.fr        #
+#    Updated: 2024/10/09 15:52:04 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME	:= PhoneBook
 OBJ_DIR	:= obj
 
 CC		:= c++
-CFLAGS	:= -Wextra -Wall -Werror -std=c++98
+CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
 SRC		:= PhoneBook.cpp Contact.cpp \
 
@@ -37,7 +37,7 @@ clean:
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) && printf "$(GREEN)✔️ $(NAME)$(NC) clean\n"
 
 re: clean all
 
