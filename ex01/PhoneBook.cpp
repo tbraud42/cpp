@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:21:36 by tao               #+#    #+#             */
-/*   Updated: 2024/10/09 15:51:13 by tao              ###   ########.fr       */
+/*   Updated: 2024/12/28 23:36:36 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,13 +218,14 @@ void	PhoneBook::ft_search() {
 int	main(void) {
 	std::string	input;
 
+
 	PhoneBook contact;
 	while (1) {
 		ft_print_header(0);
 		std::cout << "choose me (kawai)" << std::endl;
 		std::cin >> input;
-		// if (!std::cin.good())
-		// 	return (1);
+		if (!std::cin.good())
+			return (1);
 		if (input.compare("ADD") == 0)
 			contact.ft_add();
 		else if (input.compare("SEARCH") == 0)
