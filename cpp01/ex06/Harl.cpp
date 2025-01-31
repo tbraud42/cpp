@@ -6,33 +6,38 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 06:07:47 by tao               #+#    #+#             */
-/*   Updated: 2025/01/12 19:23:27 by tao              ###   ########.fr       */
+/*   Updated: 2025/01/30 03:07:29 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
 Harl::Harl() {
-
+	return ;
 }
-Harl::~Harl() {
 
+Harl::~Harl() {
+	return ;
 }
 
 void Harl::debug( void ) {
 	std::cout << std::endl << "I love having 7XL-double-cheese supplement \"my big burger mmmh\". I really do!" << std::endl;
+	return ;
 }
 
 void Harl::info( void ) {
 	std::cout << std::endl << "I cannot believe adding extra bacon costs more money. You didn t put enough bacon in my burger! If you did, I wouldn t be asking for more!" << std::endl;
+	return ;
 }
 
 void Harl::warning( void ) {
 	std::cout << std::endl << "I think I deserve to have some extra bacon for free. I ve been coming for years whereas you started working here since last month." << std::endl;
+	return ;
 }
 
 void Harl::error( void ) {
 	std::cout << std::endl << "This is unacceptable! I want to speak to the manager now." << std::endl;
+	return ;
 }
 
 void Harl::complain( std::string level ) {
@@ -41,9 +46,12 @@ void Harl::complain( std::string level ) {
 	choice[1] = "INFO";
 	choice[2] = "WARNING";
 	choice[3] = "ERROR";
+
 	int i = 0;
+
 	while (i < 4 && level.compare(choice[i]))
 		i++;
+
 	i++;
 	switch (i)
 	{
@@ -68,21 +76,6 @@ void Harl::complain( std::string level ) {
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 
-	// switch (i)
-	// {
-	// 	case 0:
-	// 		this->debug();
-	// 	case 1:
-	// 		this->info();
-	// 	case 2:
-	// 		this->warning();
-	// 	case 3:
-	// 		this->error();
-	// 		break;
-	// 	default:
-	// 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	// 		break;
-	// }
-	// std::cout << std::endl;
+	return ;
 }
 

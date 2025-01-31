@@ -6,18 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/01/31 00:52:36 by tao              ###   ########.fr        #
+#    Updated: 2025/01/31 01:40:13 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= megaphone
+NAME	:= Dream
 
 OBJ_DIR	:= obj
 
 CC		:= c++
-CFLAGS	:= -Wextra -Wall -Werror -std=c++98
+CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= megaphone.cpp \
+SRC		:= Account.cpp main.cpp \
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

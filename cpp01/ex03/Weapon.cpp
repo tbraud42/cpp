@@ -6,22 +6,22 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 02:12:42 by tao               #+#    #+#             */
-/*   Updated: 2025/01/07 02:11:59 by tao              ###   ########.fr       */
+/*   Updated: 2025/01/30 03:05:16 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
 Weapon::Weapon() {
-
+	return ;
 }
 
-Weapon::Weapon(std::string type) {
-	this->_type = type;
+Weapon::Weapon(std::string type) : _type(type) {
+	return ;
 }
 
 Weapon::~Weapon(void) {
-
+	return ;
 }
 
 const std::string& Weapon::getType(void) {
@@ -30,4 +30,5 @@ const std::string& Weapon::getType(void) {
 
 void Weapon::setType(std::string type) {
 	this->_type = type;
+	return ;
 }

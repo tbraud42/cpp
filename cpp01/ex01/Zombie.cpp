@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:26:29 by tao               #+#    #+#             */
-/*   Updated: 2025/01/03 20:50:07 by tao              ###   ########.fr       */
+/*   Updated: 2025/01/31 00:54:59 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Zombie::~Zombie(void) {
 
 void Zombie::setName(std::string name) {
 	this->_name = name;
+	return ;
 }
 
 void Zombie::announce(void) {

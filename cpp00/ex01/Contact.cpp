@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 23:03:36 by tao               #+#    #+#             */
-/*   Updated: 2024/10/04 23:04:28 by tao              ###   ########.fr       */
+/*   Updated: 2025/01/30 03:07:57 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void	Contact::SetInfo(std::string info[5]) {
 	this->_info[2] = info[2];
 	this->_info[3] = info[3];
 	this->_info[4] = info[4];
+
+	return ;
 }
