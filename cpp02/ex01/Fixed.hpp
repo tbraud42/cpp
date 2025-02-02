@@ -6,13 +6,14 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:54 by tao               #+#    #+#             */
-/*   Updated: 2025/01/30 02:56:53 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/02 16:17:44 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <math.h>
 
 class Fixed {
 
@@ -21,12 +22,12 @@ class Fixed {
 		Fixed(void);
 		Fixed(int const value);
 		Fixed(float const value);
-		Fixed(Fixed const & copie) ; // constructeur par recopie ?
+		Fixed(Fixed const & copie) ;
 		~Fixed(void);
 
 		float toFloat( void ) const;
 		int toInt( void ) const;
-		Fixed& operator=(Fixed const &num);// operateur pour quoi faire
+		Fixed& operator=(Fixed const &num);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
 
@@ -37,3 +38,5 @@ class Fixed {
 		const static int _int_for_bits = 8;
 
 };
+
+std::ostream& operator<<(std::ostream& out, Fixed const &fixed);

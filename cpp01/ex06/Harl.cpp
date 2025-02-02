@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 06:07:47 by tao               #+#    #+#             */
-/*   Updated: 2025/01/31 23:59:35 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/01 00:07:29 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,17 @@ void Harl::complain( std::string level ) {
 			std::cout << "[ DEBUG ]" << std::endl;
 			this->debug();
 			std::cout << std::endl;
+			/* fall through */
 		case 2:
 			std::cout << "[ INFO ]" << std::endl;
 			this->info();
 			std::cout << std::endl;
+			/* fall through */
 		case 3:
 			std::cout << "[ WARNING ]" << std::endl;
 			this->warning();
 			std::cout << std::endl;
+			/* fall through */
 		case 4:
 			std::cout << "[ ERROR ]" << std::endl;
 			this->error();
