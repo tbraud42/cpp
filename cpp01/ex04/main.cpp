@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:26:49 by tao               #+#    #+#             */
-/*   Updated: 2025/01/10 06:02:29 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 18:04:23 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 int main(int ac, char **av)
 {
 	if (ac != 4) {std::cout << "missing arguments" << std::endl; return (1);}
+
+	if (!av[2][0]) {std::cout << "missing argument to replace" << std::endl; return (1);}
 
 	std::ifstream file_in;
 	file_in.open((std::string(av[1])).c_str(), std::ifstream::in);
@@ -39,7 +41,7 @@ int main(int ac, char **av)
 	while (i != std::string::npos) {
 		text.erase(text.begin() + i, text.begin() + i + strlen(av[2]));
 		text.insert(i, av[3]);
-		i = text.find(av[2]);
+		i = text.find(av[2], i + strlen(av[3]));
 	}
 
 	file_replace << text;

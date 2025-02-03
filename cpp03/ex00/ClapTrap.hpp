@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 18:26:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 17:50:32 by tao              ###   ########.fr       */
+/*   Created: 2025/01/15 04:25:54 by tao               #+#    #+#             */
+/*   Updated: 2025/02/03 18:00:09 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <new>
 
-class Zombie {
+class ClapTrap {
 
 	public :
 
-		Zombie(void);
-		~Zombie(void);
-
-		void announce(void);
-		void setName(std::string name);
+		ClapTrap(std::string name);
+		ClapTrap(ClapTrap const &copie);
+		ClapTrap& operator=(ClapTrap const &copie);
+		~ClapTrap();
+		void attack(const std::string& target);
+		void takeDamage(unsigned int amount);
+		void beRepaired(unsigned int amount);
 
 	private :
 
-		std::string	_name;
+		std::string		_name;
+		unsigned int	_HitPoint;
+		unsigned int	_EnergyPoint;
+		unsigned int	_AttackDamage;
 
 };
-
-Zombie* zombieHorde(int N, std::string name);

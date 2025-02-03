@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 16:25:36 by tao               #+#    #+#             */
-/*   Updated: 2025/01/03 03:11:26 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 17:31:31 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 int main(void){
 
-	Zombie *roger = NULL;
-	roger->randomChump("roger");
+	std::cout << "=========================" << std::endl;
+	randomChump("roger");
+	std::cout << "=========================" << std::endl;
 
 	Zombie *sylvie = NULL;
-	sylvie = sylvie->newZombie("sylvie");
-
+	{
+		sylvie = newZombie("sylvie");
+	}
+	std::cout << "=========================" << std::endl;
+	sylvie->announce();
 	delete sylvie;
+	std::cout << "=========================" << std::endl;
 
 	return 0;
 }

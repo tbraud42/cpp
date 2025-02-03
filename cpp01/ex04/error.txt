@@ -1,6 +1,0 @@
-valgrind ./for_loser Makefile "" ""
-
-
-valgrind ./for_loser Makefile "NAME" "NAME" && cat Makefile.replace
-
-
