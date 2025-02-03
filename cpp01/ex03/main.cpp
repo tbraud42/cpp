@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:26:49 by tao               #+#    #+#             */
-/*   Updated: 2025/01/31 19:14:03 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 19:12:01 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 int main()
 {
 	{
-		// Weapon club = Weapon("ping pong table");
-		// HumanA thierry("thierry_henry", club);
-		// thierry.attack();
-		// club.setType("");
-		// thierry.attack();
+		Weapon club = Weapon("ping pong table");
+		HumanA thierry("thierry_henry", club);
+		thierry.attack();
+		club.setType("");
+		thierry.attack();
 	}
 	{
 		Weapon club = Weapon("bed frame");

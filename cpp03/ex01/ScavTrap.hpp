@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 02:12:27 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 19:11:20 by tao              ###   ########.fr       */
+/*   Created: 2025/02/03 18:37:38 by tao               #+#    #+#             */
+/*   Updated: 2025/02/03 19:39:07 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Weapon.hpp"
+#include "ClapTrap.hpp"
 
-class HumanB {
+class ScavTrap : public ClapTrap {
 
 	public :
 
-		HumanB(std::string name);
-		~HumanB(void);
-
-		void attack(void);
-		void setWeapon(Weapon & weapon);
+		ScavTrap(std::string name);
+		ScavTrap(ScavTrap const &copie);
+		ScavTrap& operator=(ScavTrap const &copie);
+		~ScavTrap();
 
 	private :
 
-		std::string _name;
-		Weapon * _weapon;
 
 };

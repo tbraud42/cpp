@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:25:22 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 17:19:21 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 19:06:18 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoint(10), _EnergyPoint(
 	return ;
 }
 
-ClapTrap::ClapTrap(ClapTrap const &copie)
-{
-	std::cout << "Default constructor called" << std::endl;
+ClapTrap::ClapTrap(ClapTrap const &copie) {
+	std::cout << "Copy constructor called" << std::endl;
 	*this = copie;
 }
 

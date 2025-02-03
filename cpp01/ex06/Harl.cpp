@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 06:07:47 by tao               #+#    #+#             */
-/*   Updated: 2025/02/01 00:07:29 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 19:23:42 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,7 @@ void Harl::error( void ) {
 }
 
 void Harl::complain( std::string level ) {
-	std::string choice[4];
-	choice[0] = "DEBUG";
-	choice[1] = "INFO";
-	choice[2] = "WARNING";
-	choice[3] = "ERROR";
+	std::string choice[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	int i = 0;
 

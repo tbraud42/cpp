@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 06:07:47 by tao               #+#    #+#             */
-/*   Updated: 2025/01/30 03:06:15 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/03 19:23:54 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ void Harl::error( void ) {
 void Harl::complain( std::string level ) {
 	void (Harl::*functionPtr[4])(void) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	std::string choice[4];
-	choice[0] = "DEBUG";
-	choice[1] = "INFO";
-	choice[2] = "WARNING";
-	choice[3] = "ERROR";
+	std::string choice[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++) {
 		if (!level.compare(choice[i])) {
