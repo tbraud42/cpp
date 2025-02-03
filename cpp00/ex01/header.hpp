@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 21:30:36 by tbraud            #+#    #+#             */
-/*   Updated: 2025/02/02 21:59:35 by tao              ###   ########.fr       */
+/*   Created: 2025/02/02 18:31:17 by tao               #+#    #+#             */
+/*   Updated: 2025/02/02 19:20:22 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-class Contact {
+#include <iostream>
+#include <cstring> /* string */
+#include <iomanip> /* setw */
+#include <cstdlib> /* itoa atoi */
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-public :
-
-	Contact(void);
-	~Contact(void);
-	std::string *GetContact(void);
-	void SetInfo(std::string info[5]);
-
-private :
-
-	std::string _info[5]; // first_name, last_name, nikname, phone_number, darkest secret
-
-};
-
+void		ft_print_header(int i);
+std::string	ft_resize_string(std::string str);
+void		ft_print_search(int i, std::string info[5]);
+int			ft_display_search(Contact *contact);
+int			ft_find_contact(Contact *contact, int i);
+void		ft_contact_empty(void);

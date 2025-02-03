@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 22:16:13 by tao               #+#    #+#             */
-/*   Updated: 2025/01/04 02:24:20 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/02 18:36:22 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <iomanip> /* setw */
 #include <cstdlib> /* itoa atoi */
 #include "Contact.hpp"
+#include "header.hpp"
 
 class PhoneBook {
 
