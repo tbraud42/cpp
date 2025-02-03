@@ -6,18 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/03 20:35:31 by tao              ###   ########.fr        #
+#    Updated: 2025/02/03 21:02:39 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= Serena
+NAME	:= Repetitive_work
 
 OBJ_DIR	:= obj
 
 CC		:= c++
 CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= ClapTrap.cpp main.cpp ScavTrap.cpp\
+SRC		:= ClapTrap.cpp FragTrap.cpp main.cpp ScavTrap.cpp\
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

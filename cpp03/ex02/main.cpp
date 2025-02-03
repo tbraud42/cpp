@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 18:37:38 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 20:56:22 by tao              ###   ########.fr       */
+/*   Created: 2025/01/15 04:25:34 by tao               #+#    #+#             */
+/*   Updated: 2025/02/03 21:04:04 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-#include "ClapTrap.hpp"
+int main( void ) {
 
-class ScavTrap : public ClapTrap {
+	FragTrap bernard("bernard");
+	FragTrap sylvie("sylvie");
 
-	public :
+	bernard.attack("");
+	bernard.attack("sylvie");
+	sylvie.takeDamage(0);
 
-		ScavTrap(std::string name);
-		ScavTrap(ScavTrap const &copie);
-		ScavTrap& operator=(ScavTrap const &copie);
-		~ScavTrap();
-
-		void attack(const std::string& target);
-		void guardGate();
-
-	private :
-
-
-};
+}
