@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 18:37:38 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 22:17:31 by tao              ###   ########.fr       */
+/*   Created: 2025/02/03 22:12:11 by tao               #+#    #+#             */
+/*   Updated: 2025/02/03 23:33:07 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "ClapTrap.hpp"
+#include <iostream>
 
-class FragTrap : public ClapTrap {
+class Animal {
 
 	public :
 
-		FragTrap(std::string name);
-		FragTrap(FragTrap const &copie);
-		FragTrap& operator=(FragTrap const &copie);
-		~FragTrap();
+		Animal();
+		Animal(std::string name);
+		Animal(Animal const &copie);
+		Animal& operator=(Animal const &copie);
+		~Animal();
+		std::string getType();
 
-		void attack(const std::string& target);
-		void highFivesGuys(void);
+	protected :
+
+		std::string type;
 
 };

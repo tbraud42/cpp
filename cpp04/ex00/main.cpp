@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 18:37:38 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 22:17:31 by tao              ###   ########.fr       */
+/*   Created: 2025/01/15 04:25:34 by tao               #+#    #+#             */
+/*   Updated: 2025/02/04 00:55:40 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 
-#include "ClapTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-class FragTrap : public ClapTrap {
+int main()
+{
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
 
-	public :
-
-		FragTrap(std::string name);
-		FragTrap(FragTrap const &copie);
-		FragTrap& operator=(FragTrap const &copie);
-		~FragTrap();
-
-		void attack(const std::string& target);
-		void highFivesGuys(void);
-
-};
+	return 0;
+}
