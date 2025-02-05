@@ -6,11 +6,11 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/05 02:23:46 by tao              ###   ########.fr        #
+#    Updated: 2025/02/03 23:24:45 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= Polymorphisme
+NAME	:= Repetitive_work
 
 OBJ_DIR	:= obj
 

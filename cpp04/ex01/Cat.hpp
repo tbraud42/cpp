@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:16 by tao               #+#    #+#             */
-/*   Updated: 2025/02/05 02:22:46 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/05 01:40:46 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ class Cat : public Animal{
 		Cat& operator=(Cat const &copie);
 		~Cat();
 		void makeSound() const;
-
 };
