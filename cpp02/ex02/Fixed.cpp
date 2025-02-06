@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:57 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 15:48:06 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:29:36 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 Fixed::Fixed() : _integer(0) {
 	// std::cout << "Default constructor called" << std::endl;
+	return ;
 }
 
 Fixed::Fixed(int const value) {
 	// std::cout << "Int constructor called" << std::endl;
 	_integer = value << _int_for_bits;
+	return ;
 }
 
 Fixed::Fixed(float const value) {
 	// std::cout << "Float constructor called" << std::endl;
 	_integer = roundf(value * (1 << _int_for_bits));
+	return ;
 }
 
 Fixed::Fixed(Fixed const &copie) {
 	// std::cout << "Copy constructor called" << std::endl;
 	*this = copie;
-}
-
-Fixed::~Fixed() {
-	// std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 Fixed& Fixed::operator=(Fixed const &fixed) {
@@ -40,6 +40,11 @@ Fixed& Fixed::operator=(Fixed const &fixed) {
 	if (this != &fixed)
 		_integer = fixed.getRawBits();
 	return *this;
+}
+
+Fixed::~Fixed() {
+	// std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 int Fixed::getRawBits(void) const {
@@ -120,7 +125,6 @@ Fixed& Fixed::operator++(void) {
 	return (*this);
 }
 
-// Post incrementation, on rajoute int par convention pour que le comilateur comprennent qu'il s'agit de la post incrementation
 Fixed Fixed::operator++(int) {
 	Fixed tmp(*this);
 
@@ -133,7 +137,6 @@ Fixed& Fixed::operator--(void) {
 	return (*this);
 }
 
-// Post incrementation, on rajoute int par convention pour que le comilateur comprennent qu'il s'agit de la post incrementation
 Fixed Fixed::operator--(int) {
 	Fixed tmp(*this);
 
@@ -142,9 +145,7 @@ Fixed Fixed::operator--(int) {
 }
 
 Fixed& Fixed::min(Fixed &a, Fixed &b) {
-	if (a.getRawBits() > b.getRawBits())
-		return (b);
-	return (a);
+	return (a.getRawBits() > b.getRawBits() ? b : a);
 }
 
 const Fixed& Fixed::min(const Fixed &a,const Fixed &b) {

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:57 by tao               #+#    #+#             */
-/*   Updated: 2025/01/29 15:33:18 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:21:17 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,22 @@ Fixed::Fixed() : _integer(0) {
 	return ;
 }
 
-Fixed::Fixed(Fixed const & copie) { // dafuck system
-	*this = copie; // on fait une fonction d'affectation ?
+Fixed::Fixed(Fixed const & copie) {
 	std::cout << "Copy constructor called" << std::endl;
+	*this = copie;
 	return ;
+}
+
+Fixed&	Fixed::operator=(Fixed const & num) {
+	std::cout << "Copy assignement operator called" << std::endl;
+	this->_integer = num.getRawBits();
+	return *this;
 }
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
 	return ;
 }
-
-Fixed&	Fixed::operator=(Fixed const & num) { // num en mode float?
-	std::cout << "Copy assignement operator called" << std::endl;
-	this->_integer = num.getRawBits();
-	return *this;
-}
-
 
 int Fixed::getRawBits( void ) const {
 	std::cout << "getRawBits member function called" << std::endl;

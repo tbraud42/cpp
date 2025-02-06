@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:54 by tao               #+#    #+#             */
-/*   Updated: 2025/02/02 16:17:44 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:22:30 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,13 @@ class Fixed {
 		Fixed(int const value);
 		Fixed(float const value);
 		Fixed(Fixed const & copie) ;
+		Fixed& operator=(Fixed const &num);
 		~Fixed(void);
 
 		float toFloat( void ) const;
 		int toInt( void ) const;
-		Fixed& operator=(Fixed const &num);
 		int getRawBits( void ) const;
 		void setRawBits( int const raw );
-
 
 	private :
 
