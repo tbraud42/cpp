@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   ICharacter.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 22:12:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:52:33 by tao              ###   ########.fr       */
+/*   Created: 2025/02/06 03:58:14 by tao               #+#    #+#             */
+/*   Updated: 2025/02/06 03:59:08 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "ICharacter.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+std::string const &ICharacter::getName() const {
 
-class Dog : public Animal{
+}
 
-	public :
+void ICharacter::equip(AMateria *m) {
 
-		Dog();
-		Dog(Dog const &copie);
-		Dog& operator=(Dog const &copie);
-		~Dog();
-		void makeSound() const;
+}
 
-	private :
+void ICharacter::unequip(int idx) {
 
-		Brain *brain;
-};
+}
+
+void ICharacter::use(int idx, ICharacter &target) {
+
+}
+
+ICharacter::~ICharacter() {
+	// std::cout << "ICharacter destructor called" << std::endl;
+}

@@ -6,18 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/06 02:45:10 by tao              ###   ########.fr        #
+#    Updated: 2025/02/06 04:02:05 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= burnTheWorld
+NAME	:= abstraite
 
 OBJ_DIR	:= obj
 
 CC		:= c++
 CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp\
+SRC		:= Cure.cpp Ice.cpp ICharacter.cpp main.cpp Materia.cpp\
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

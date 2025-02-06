@@ -6,44 +6,44 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:09 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:44:51 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 03:29:58 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal() : type("") {
-	std::cout << "Animal default constructor called" << std::endl;
+AAnimal::AAnimal() : type("") {
+	std::cout << "AAnimal default constructor called" << std::endl;
 	return ;
 }
 
-Animal::Animal(std::string name) : type(name) {
-	std::cout << "Animal copie constructor called" << std::endl;
+AAnimal::AAnimal(std::string name) : type(name) {
+	std::cout << "AAnimal copie constructor called" << std::endl;
 	return ;
 }
 
-Animal::Animal(Animal const &copie) {
-	std::cout << "Animal copie constructor called" << std::endl;
+AAnimal::AAnimal(AAnimal const &copie) {
+	std::cout << "AAnimal copie constructor called" << std::endl;
 	*this = copie;
 	return ;
 }
 
-Animal &Animal::operator=(Animal const &copie) {
-	std::cout << "Animal copy assignment operator called" << std::endl;
+AAnimal &AAnimal::operator=(AAnimal const &copie) {
+	std::cout << "AAnimal copy assignment operator called" << std::endl;
 	this->type = copie.type;
 	return (*this);
 }
 
-Animal::~Animal() {
-	std::cout << "Animal destructor called" << std::endl;
+AAnimal::~AAnimal() {
+	std::cout << "AAnimal destructor called" << std::endl;
 	return ;
 }
 
-std::string Animal::getType() const {
+std::string AAnimal::getType() const {
 	return (this->type);
 }
 
-void Animal::makeSound() const {
-	std::cout << "a grouuuu a grouuuu (animal indeterminer)" << std::endl;
+void AAnimal::makeSound() const {
+	std::cout << "a grouuuu a grouuuu (AAnimal indeterminer)" << std::endl;
 	return ;
 }

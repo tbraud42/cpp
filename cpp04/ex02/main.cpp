@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 22:12:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:52:33 by tao              ###   ########.fr       */
+/*   Created: 2025/01/15 04:25:34 by tao               #+#    #+#             */
+/*   Updated: 2025/02/06 03:31:01 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-class Dog : public Animal{
+int main()
+{
+	// AAnimal bob("bob");
+	const int size = 4;
+	AAnimal* Animals[size];
 
-	public :
+	for (int i = 0; i < size / 2; i++)
+		Animals[i] = new Dog();
+	for (int i = size / 2; i < size; i++)
+		Animals[i] = new Cat();
 
-		Dog();
-		Dog(Dog const &copie);
-		Dog& operator=(Dog const &copie);
-		~Dog();
-		void makeSound() const;
 
-	private :
+	for (int i = 0; i < size; i++)
+		delete Animals[i];
 
-		Brain *brain;
-};
+
+	return 0;
+}

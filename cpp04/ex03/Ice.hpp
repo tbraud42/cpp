@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 22:12:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:52:33 by tao              ###   ########.fr       */
+/*   Created: 2025/02/06 03:49:18 by tao               #+#    #+#             */
+/*   Updated: 2025/02/06 03:55:13 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "Materia.hpp"
 
-class Dog : public Animal{
+class Ice  : public AMateria{
 
 	public :
 
-		Dog();
-		Dog(Dog const &copie);
-		Dog& operator=(Dog const &copie);
-		~Dog();
-		void makeSound() const;
+		Ice(std::string const & type);
+		Ice(Ice const &copie);
+		Ice& operator=(Ice const &copie);
+		~Ice();
 
-	private :
+	protected :
 
-		Brain *brain;
 };

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:18 by tao               #+#    #+#             */
-/*   Updated: 2025/02/05 01:42:18 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 01:31:23 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Dog::Dog() : Animal("Dog") {
 }
 
 Dog::Dog(Dog const &copie) : Animal("Dog") {
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << "Dog copie constructor called" << std::endl;
 	*this = copie;
 }
 

@@ -5,24 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 04:25:34 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 01:25:26 by tao              ###   ########.fr       */
+/*   Created: 2025/02/06 03:59:42 by tao               #+#    #+#             */
+/*   Updated: 2025/02/06 04:02:53 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 
-int main( void ) {
-	ClapTrap *original = new ClapTrap("original");
-	ClapTrap *copie = new ClapTrap(*original);
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	delete copie;
-	delete original;
-	// FragTrap bernard("bernard");
-	// FragTrap sylvie("sylvie");
+	ICharacter* me = new Character("me");
 
-	// bernard.attack("");
-	// bernard.attack("sylvie");
-	// sylvie.takeDamage(0);
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+
+	return 0;
 }

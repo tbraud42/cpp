@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:52:33 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 03:30:05 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal{
+class Dog : public AAnimal{
 
 	public :
 
