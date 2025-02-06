@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:54 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 20:33:48 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:42:21 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class ClapTrap {
 		ClapTrap(ClapTrap const &copie);
 		ClapTrap& operator=(ClapTrap const &copie);
 		~ClapTrap();
+
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);

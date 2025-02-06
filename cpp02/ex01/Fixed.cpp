@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:57 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 15:22:44 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:33:12 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,36 @@
 
 Fixed::Fixed() : _integer(0) {
 	std::cout << "Default constructor called" << std::endl;
+	return ;
 }
 
 Fixed::Fixed(int const value) {
 	std::cout << "Int constructor called" << std::endl;
-	_integer = value << _int_for_bits;
+	this->_integer = value << _int_for_bits;
+	return ;
 }
 
 Fixed::Fixed(float const value) {
 	std::cout << "Float constructor called" << std::endl;
-	_integer = roundf(value * (1 << _int_for_bits));
+	this->_integer = roundf(value * (1 << _int_for_bits));
+	return ;
 }
 
 Fixed::Fixed(Fixed const &copie) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = copie;
+	return ;
 }
 
 Fixed& Fixed::operator=(Fixed const &fixed) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &fixed)
-		_integer = fixed.getRawBits();
+	this->_integer = fixed.getRawBits();
 	return *this;
 }
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 int Fixed::getRawBits(void) const {

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 18:37:38 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 20:56:22 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:42:12 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,5 @@ class ScavTrap : public ClapTrap {
 
 		void attack(const std::string& target);
 		void guardGate();
-
-	private :
-
 
 };

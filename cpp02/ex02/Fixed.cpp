@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 04:25:57 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 15:29:36 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:33:33 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ Fixed::Fixed(Fixed const &copie) {
 
 Fixed& Fixed::operator=(Fixed const &fixed) {
 	// std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &fixed)
-		_integer = fixed.getRawBits();
+	this->_integer = fixed.getRawBits();
 	return *this;
 }
 

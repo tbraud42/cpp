@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 16:25:22 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 19:06:18 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 15:36:04 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name), _HitPoint(10), _EnergyPoint(
 ClapTrap::ClapTrap(ClapTrap const &copie) {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = copie;
+	return ;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const &copie) {
@@ -33,6 +34,7 @@ ClapTrap& ClapTrap::operator=(ClapTrap const &copie) {
 
 ClapTrap::~ClapTrap() {
 	std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 void ClapTrap::attack(const std::string &target) {
@@ -48,6 +50,8 @@ void ClapTrap::attack(const std::string &target) {
 		this->_EnergyPoint--;
 
 	std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_AttackDamage << " points of damage!" << std::endl;
+
+	return ;
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
@@ -59,6 +63,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		this->_HitPoint -= amount;
 	}
 
+	return ;
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
@@ -69,4 +74,6 @@ void ClapTrap::beRepaired(unsigned int amount) {
 		this->_EnergyPoint--;
 
 	this->_HitPoint += amount;
+
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 19:01:16 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 21:03:20 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 16:33:23 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->_HitPoint = 100;
 	this->_EnergyPoint = 100;
 	this->_AttackDamage = 30;
+	return ;
 }
 
 FragTrap::FragTrap(FragTrap const &copie) : ClapTrap(copie) {
 	std::cout << "FragTrap copy constructor called" << std::endl;
 	*this = copie;
+	return ;
 }
 
 FragTrap &FragTrap::operator=(FragTrap const &copie) {
@@ -35,6 +37,7 @@ FragTrap &FragTrap::operator=(FragTrap const &copie) {
 
 FragTrap::~FragTrap() {
 	std::cout << "FragTrap destructor called" << std::endl;
+	return ;
 }
 
 void FragTrap::attack(const std::string &target)
@@ -51,9 +54,13 @@ void FragTrap::attack(const std::string &target)
 	}
 	else
 		this->_EnergyPoint--;
+
 	std::cout << "FragTrap " << this->_name << " attacks " << target << ", causing " << this->_AttackDamage << " points of damage!" << std::endl;
+
+	return ;
 }
 
 void FragTrap::highFivesGuys(void) {
 	std::cout << "mmmh positive high five" << std::endl;
+	return ;
 }
