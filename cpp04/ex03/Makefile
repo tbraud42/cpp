@@ -6,18 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/06 04:02:05 by tao              ###   ########.fr        #
+#    Updated: 2025/02/10 03:52:14 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= abstraite
+NAME	:= InterfaceRecap
 
 OBJ_DIR	:= obj
 
 CC		:= c++
 CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= Cure.cpp Ice.cpp ICharacter.cpp main.cpp Materia.cpp\
+SRC		:= AMateria.cpp Character.cpp Cure.cpp Ice.cpp main.cpp MateriaSource.cpp \
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

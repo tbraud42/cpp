@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 20:21:36 by tao               #+#    #+#             */
-/*   Updated: 2025/02/03 00:58:10 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 17:14:28 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,44 +25,32 @@ Contact *PhoneBook::GetPhoneBook(void) {
 	return (this->_info);
 }
 
+static void	ft_prompt_add(std::string prompt, std::string *input) {
+	while (1) {
+		ft_print_header(1);
+		std::cout << prompt << std::endl;
+		std::getline(std::cin, *input);
+		if (!std::cin.good())
+			exit(1);
+		if (!(*input).empty())
+			break ;
+	}
+	return ;
+}
+
 void	PhoneBook::ft_add(void) {
 	std::string	info[5];
 	std::string	input;
 
-	while (1) {
-		ft_print_header(1);
-		std::cout << "first name" << std::endl;
-		std::getline(std::cin, info[0]);
-		if (!std::cin.good())
-			exit(1);
-		if (!info[0].empty())
-			break ;
-	}
+	ft_prompt_add("first name", &info[0]);
 
+	ft_prompt_add("last name", &info[1]);
 
-	ft_print_header(1);
-	std::cout << "last name" << std::endl;
-	std::getline(std::cin, info[1]);
-	if (!std::cin.good())
-		exit(1);
+	ft_prompt_add("nikname", &info[2]);
 
-	ft_print_header(1);
-	std::cout << "nikname" << std::endl;
-	std::getline(std::cin, info[2]);
-	if (!std::cin.good())
-		exit(1);
+	ft_prompt_add("phone number", &info[3]);
 
-	ft_print_header(1);
-	std::cout << "phone number" << std::endl;
-	std::getline(std::cin, info[3]);
-	if (!std::cin.good())
-		exit(1);
-
-	ft_print_header(1);
-	std::cout << "darkest secret" << std::endl;
-	std::getline(std::cin, info[4]);
-	if (!std::cin.good())
-		exit(1);
+	ft_prompt_add("darkest secret", &info[4]);
 
 	this->_info[this->_index].SetInfo(info);
 	this->_index++;

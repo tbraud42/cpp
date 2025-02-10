@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:11 by tao               #+#    #+#             */
-/*   Updated: 2025/02/05 01:41:56 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 16:58:12 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Animal {
 		Animal(std::string name);
 		Animal(Animal const &copie);
 		Animal& operator=(Animal const &copie);
-		~Animal();
+		virtual ~Animal();
 		std::string getType() const;
 		virtual void makeSound() const;
 

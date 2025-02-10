@@ -1,35 +1,49 @@
-#include "Materia.hpp"
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Materia.cpp                                        :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 03:41:51 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:41:52 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/10 06:51:18 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Materia.hpp"
+#include "AMateria.hpp"
+
+AMateria::AMateria(void) {
+	return ;
+}
 
 AMateria::AMateria(std::string const &type) : _type(type) {
-	// std::cout << "AMateria default constructor called" << std::endl;
 	return ;
 }
 
-
-AMateria::AMateria(AMateria const &copie) {
-	// std::cout << "AMateria copie constructor called" << std::endl;
-	*this = copie;
+AMateria::AMateria(const AMateria &obj) {
+	*this = obj;
 	return ;
 }
 
-AMateria &AMateria::operator=(AMateria const &copie) {
-	// std::cout << "AMateria copy assignment operator called" << std::endl;
+AMateria::~AMateria(void) {
+	return ;
 }
 
-AMateria::~AMateria() {
-	// std::cout << "AMateria destructor called" << std::endl;
+AMateria	&AMateria::operator=(const AMateria &obj) {
+	this->_type = obj.getType();
+	return (*this);
+}
+
+std::string const	&AMateria::getType(void) const {
+	return (this->_type);
+}
+
+void	AMateria::setType(std::string type) {
+	this->_type = type;
+	return ;
+}
+
+void	AMateria::use(ICharacter &target) {
+	(void)target;
+	return ;
 }

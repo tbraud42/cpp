@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 04:25:34 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 17:07:27 by tao              ###   ########.fr       */
+/*   Created: 2025/02/03 22:12:11 by tao               #+#    #+#             */
+/*   Updated: 2025/02/06 16:43:32 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include <iostream>
 
-int main()
-{
-	// AAnimal bob("bob");
-	const int size = 4;
-	AAnimal* Animals[size];
+class WrongAnimal {
 
-	for (int i = 0; i < size / 2; i++)
-		Animals[i] = new Dog();
-	for (int i = size / 2; i < size; i++)
-		Animals[i] = new Cat();
+	public :
 
+		WrongAnimal();
+		WrongAnimal(std::string name);
+		WrongAnimal(WrongAnimal const &copie);
+		WrongAnimal& operator=(WrongAnimal const &copie);
+		~WrongAnimal();
+		std::string getType() const;
+		void makeSound() const;
 
-	for (int i = 0; i < size; i++)
-		delete Animals[i];
+	protected :
 
+		std::string type;
 
-	return 0;
-}
+};

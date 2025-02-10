@@ -6,13 +6,13 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 22:08:30 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:30:19 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 18:44:37 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 class Brain {
 

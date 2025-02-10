@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 04:33:52 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 04:34:17 by tao              ###   ########.fr       */
+/*   Created: 2025/02/10 01:40:17 by tao               #+#    #+#             */
+/*   Updated: 2025/02/10 06:55:24 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+#include "iostream"
 #include "IMateriaSource.hpp"
 
-void IMateriaSource::learnMateria(AMateria *) {
-}
+class MateriaSource : public IMateriaSource {
 
-AMateria *IMateriaSource::createMateria(std::string const &type) {
-	// return nullptr;
-}
+	public :
+
+		MateriaSource();
+		MateriaSource(MateriaSource const &copie);
+		MateriaSource& operator=(MateriaSource const &copie);
+		~MateriaSource();
+
+		AMateria *getSrc(int i) const;
+
+		void learnMateria(AMateria *);
+		AMateria* createMateria(std::string const & type);
+
+	private :
+
+		AMateria	*_src[4];
+
+};
+

@@ -6,23 +6,25 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 03:49:18 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:55:13 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/10 07:00:31 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include "Materia.hpp"
+#include "AMateria.hpp"
 
-class Ice  : public AMateria{
+class Ice : public AMateria{
 
 	public :
 
+		Ice();
 		Ice(std::string const & type);
 		Ice(Ice const &copie);
 		Ice& operator=(Ice const &copie);
 		~Ice();
 
-	protected :
+		Ice *clone() const;
+		void use(ICharacter& target);
 
 };

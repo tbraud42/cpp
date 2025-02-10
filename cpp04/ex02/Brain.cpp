@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 22:09:22 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:06:22 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/06 17:02:27 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Brain::Brain() {
 	std::cout << "Brain default constructor called" << std::endl;
-	// this->
 	return ;
 }
 

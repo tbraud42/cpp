@@ -6,7 +6,7 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/05 02:23:46 by tao              ###   ########.fr        #
+#    Updated: 2025/02/06 16:44:13 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR	:= obj
 CC		:= c++
 CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= Animal.cpp Cat.cpp Dog.cpp main.cpp\
+SRC		:= Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp\
 
 OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
