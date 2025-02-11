@@ -6,33 +6,33 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/02/06 02:45:10 by tao              ###   ########.fr        #
+#    Updated: 2025/02/11 18:09:07 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= burnTheWorld
+NAME		:= burnTheWorld
 
-OBJ_DIR	:= obj
+OBJ_DIR		:= obj
 
-CC		:= c++
-CFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
+CXX			:= c++
+CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp\
+SRC			:= Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp \
 
-OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-GREEN	:= \033[1;32m
-NC		:= \033[0m
+GREEN		:= \033[1;32m
+NC			:= \033[0m
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(OBJ) -o $(NAME)
 	@printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
 
 $(OBJ_DIR)/%.o: $(SRC)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CXX) -o $@ -c $<
 	@printf "$(GREEN)✔️ $(notdir $<)$(NC) compiled\n"
 
 clean:

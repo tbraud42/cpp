@@ -1,61 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/03 22:12:18 by tao               #+#    #+#             */
-/*   Updated: 2025/02/11 18:53:59 by tao              ###   ########.fr       */
+/*   Created: 2025/02/03 22:12:13 by tao               #+#    #+#             */
+/*   Updated: 2025/02/11 18:34:49 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-Dog::Dog() : AAnimal("Dog")
-{
-	std::cout << "Dog default constructor called" << std::endl;
+WrongCat::WrongCat() : WrongAnimal("WrongCat") {
+	std::cout << "WrongCat default constructor called" << std::endl;
 	this->brain = new Brain();
 	return ;
 }
 
-Dog::Dog(Dog const &copie) : AAnimal("Dog")
-{
-	std::cout << "Dog copie constructor called" << std::endl;
+WrongCat::WrongCat(WrongCat const &copie) : WrongAnimal("WrongCat") {
+	std::cout << "WrongCat copie constructor called" << std::endl;
 	*this = copie;
 	return ;
 }
 
-Dog &Dog::operator=(Dog const &copie)
-{
-	std::cout << "Dog copy assignment operator called" << std::endl;
+WrongCat &WrongCat::operator=(WrongCat const &copie) {
+	std::cout << "WrongCat copy assignment operator called" << std::endl;
 	this->type = copie.type;
 	this->brain = new Brain(*copie.brain);
-	return (*this);
+	return *this;
 }
 
-Dog::~Dog()
-{
-	std::cout << "Dog destructor called" << std::endl;
+WrongCat::~WrongCat() {
+	std::cout << "WrongCat destructor called" << std::endl;
 	delete this->brain;
 	return ;
 }
 
-void Dog::makeSound() const
-{
-	std::cout << "bark bark" << std::endl;
+void WrongCat::makeSound() const{
+	std::cout << "grrrrrr" << std::endl;
 	return ;
 }
 
-std::string Dog::getIdeas(int i) {
+std::string WrongCat::getIdeas(int i) {
 	std::string tmp;
 	tmp = this->brain->getIdeas(i);
 	if (tmp.empty())
-		std::cout << this->type << " don't have idea at [" << i << "]" << std::endl;
+		std::cout << "I don't have idea at [" << i << "]" << std::endl;
 	return (tmp);
 }
 
-void Dog::setIdeas(std::string idea) {
+void WrongCat::setIdeas(std::string idea) {
 	if (idea.empty())
 		std::cout << this->type << " can't have empty idea" << std::endl;
 	if (this->brain->setIdeas(idea))

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:11 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:29:31 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/11 18:56:30 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class AAnimal {
 		AAnimal(std::string name);
 		AAnimal(AAnimal const &copie);
 		AAnimal& operator=(AAnimal const &copie);
-		virtual ~AAnimal();
+		virtual ~AAnimal() = 0;
 		std::string getType() const;
 		virtual void makeSound() const = 0;
 

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:20 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 02:52:33 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/11 18:26:03 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Dog : public Animal{
 		Dog& operator=(Dog const &copie);
 		~Dog();
 		void makeSound() const;
+		std::string getIdeas(int i);
+		void setIdeas(std::string idea);
 
 	private :
 

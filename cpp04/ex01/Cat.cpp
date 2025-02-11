@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 22:12:13 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 03:13:19 by tao              ###   ########.fr       */
+/*   Updated: 2025/02/11 18:51:03 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,19 @@ Cat::~Cat() {
 void Cat::makeSound() const{
 	std::cout << "grrrrrr" << std::endl;
 	return ;
+}
+
+std::string Cat::getIdeas(int i) {
+	std::string tmp;
+	tmp = this->brain->getIdeas(i);
+	if (tmp.empty())
+		std::cout << this->type << " don't have idea at [" << i << "]" << std::endl;
+	return (tmp);
+}
+
+void Cat::setIdeas(std::string idea) {
+	if (idea.empty())
+		std::cout << this->type << " can't have empty idea" << std::endl;
+	if (this->brain->setIdeas(idea))
+		std::cout << this->type << " have to much ideas, it can't add a another" << std::endl;
 }

@@ -6,33 +6,33 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/03 22:03:14 by tao               #+#    #+#              #
-#    Updated: 2025/01/12 19:04:36 by tao              ###   ########.fr        #
+#    Updated: 2025/02/11 19:02:56 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= harlfFilter
+NAME		:= harlfFilter
 
-OBJ_DIR	:= obj
+OBJ_DIR		:= obj
 
-CC		:= c++
-CFLAGS	:= -Wall -Wextra -Werror -g -std=c++98
+CXX			:= c++
+CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC		:= Harl.cpp main.cpp\
+SRC			:= Harl.cpp main.cpp\
 
-OBJ		:= $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
-GREEN	:= \033[1;32m
-NC		:= \033[0m
+GREEN		:= \033[1;32m
+NC			:= \033[0m
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(CXX) $(OBJ) -o $(NAME)
 	@printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
 
 $(OBJ_DIR)/%.o: $(SRC)
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CXX) -o $@ -c $<
 	@printf "$(GREEN)✔️ $(notdir $<)$(NC) compiled\n"
 
 clean:
