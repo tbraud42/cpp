@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 23:47:26 by tao               #+#    #+#             */
-/*   Updated: 2025/02/06 17:17:27 by tao              ###   ########.fr       */
+/*   Updated: 2025/03/15 17:34:06 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ void	ft_contact_empty(void) {
 
 int	main(void) {
 	std::string	input;
-
 
 	PhoneBook contact;
 	while (1) {
