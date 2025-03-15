@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:47:06 by tao               #+#    #+#             */
-/*   Updated: 2025/03/15 17:54:43 by tao              ###   ########.fr       */
+/*   Updated: 2025/03/15 21:24:27 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,23 @@ void Bureaucrat::downGrade() {
 	this->_grade++;
 }
 
-void Bureaucrat::signForm(Form &form) {
-	form.beSigned(*this);
+void Bureaucrat::signForm(AForm &form) {
+	try {
+		form.beSigned(*this);
+	} catch (const std::exception &e) {
+		std::cerr << "Error : " << e.what() << std::endl;
+	}
+
+	return ;
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+	try {
+		form.execute(*this);
+	} catch (const std::exception &e) {
+		std::cerr << "Error : " << e.what() << std::endl;
+	}
+
 	return ;
 }
 

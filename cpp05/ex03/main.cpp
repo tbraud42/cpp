@@ -6,43 +6,46 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:41:04 by tao               #+#    #+#             */
-/*   Updated: 2025/03/15 21:27:59 by tao              ###   ########.fr       */
+/*   Updated: 2025/03/15 21:26:53 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main() {
 
+	Intern intern;
 	Bureaucrat TheCEO("TheCEO", 1);
 	Bureaucrat ThePromising("ThePromising", 50);
 	Bureaucrat TheNew("TheNew", 150);
 
-	ShrubberyCreationForm shrub("Home");
-	RobotomyRequestForm robot("Bender");
-	PresidentialPardonForm pardon("Alice");
+	std::string formTypes[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	std::string targets[3] = {"Garden", "Bender", "Alice"};
 
-	std::cout << "\n=== TEST SHRUBBERY CREATION FORM ===" << std::endl;
-	TheCEO.signForm(shrub);
-	TheCEO.executeForm(shrub);
+	for (int i = 0; i < 3; i++) {
+		AForm *form = intern.makeForm(formTypes[i], targets[i]);
+		if (form) {
+			TheCEO.signForm(*form);
+			TheCEO.executeForm(*form);
+			delete form;
+		}
+	}
 
-	std::cout << "\n=== TEST ROBOTOMY REQUEST FORM ===" << std::endl;
-	TheCEO.signForm(robot);
-	TheCEO.executeForm(robot);
+	AForm *unknown = intern.makeForm("unknown form", "ErrorTarget");
+	if (unknown) delete unknown;
 
-	std::cout << "\n=== TEST PRESIDENTIAL PARDON FORM ===" << std::endl;
-	TheCEO.signForm(pardon);
-	TheCEO.executeForm(pardon);
+	AForm *shrub = intern.makeForm("shrubbery creation", "Home");
+	if (shrub) {
+		TheNew.signForm(*shrub);
+		TheNew.executeForm(*shrub);
+		delete shrub;
+	}
 
-	std::cout << "\n=== TEST ÉCHEC AVEC TheNew ===" << std::endl;
-	TheNew.signForm(shrub);
-	TheNew.executeForm(shrub);
-
-	std::cout << "\n=== TEST ÉCHEC SANS SIGNATURE ===" << std::endl;
-	ThePromising.executeForm(pardon);
+	AForm *pardon = intern.makeForm("presidential pardon", "Alice");
+	if (pardon) {
+		ThePromising.executeForm(*pardon);
+		delete pardon;
+	}
 
 	return 0;
 }

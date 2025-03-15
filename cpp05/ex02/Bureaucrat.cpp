@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 10:47:06 by tao               #+#    #+#             */
-/*   Updated: 2025/03/15 17:20:36 by tao              ###   ########.fr       */
+/*   Updated: 2025/03/15 17:50:27 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Bureaucrat::Bureaucrat() : _name("civil servant"), _grade(150) {
 	return ;
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name), _grade(grade) {
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) :
+	_name(name), _grade(grade) {
 	if (_grade < 1) {
 		throw GradeTooHighException();
 	}
@@ -34,7 +35,8 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name), _gra
 	return ;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &copie) : _name(copie._name), _grade(copie._grade){
+Bureaucrat::Bureaucrat(Bureaucrat const &copie) :
+	_name(copie._name), _grade(copie._grade){
 	return ;
 }
 
