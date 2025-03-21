@@ -6,18 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/03/15 22:32:23 by tao              ###   ########.fr        #
+#    Updated: 2025/03/20 06:07:22 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= coffeeMaking
+NAME		:= Serialization
 
 OBJ_DIR		:= obj
 
 CXX			:= c++
 CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC			:= AForm.cpp Bureaucrat.cpp Intern.cpp main.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp\
+SRC			:= Data.cpp main.cpp\
 
 OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
