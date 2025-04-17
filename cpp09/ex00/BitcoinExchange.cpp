@@ -6,20 +6,20 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:37:14 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/17 04:54:57 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {
-	parse(*this, "data.csv");
+	parse(this, "data.csv");
 	return ;
 }
 
 BitcoinExchange::BitcoinExchange(std::string dataFile) {
 	if (!dataFile.empty())
-		parse(*this, dataFile);
+		parse(this, dataFile);
 	return ;
 }
 
@@ -37,8 +37,6 @@ BitcoinExchange::~BitcoinExchange() {
 }
 
 void BitcoinExchange::addStack(std::string key, float value) {
-	if (value < 0)
-		throw InvalideFormat("not a positive number.");
 	bitcoinData.insert(std::pair<std::string, float>(key, value));
 	return ;
 }
@@ -50,9 +48,14 @@ float BitcoinExchange::getClosestDate(const std::string& targetDate) {
 		return it->second;
 
 	if (it == bitcoinData.begin())
-		throw std::runtime_error("Aucune date disponible avant [" + targetDate + "] "); // a changer
+		throw std::runtime_error("Erreur : aucune date connue avant " + targetDate);
 
 	--it;
 	return it->second;
 }
 
+void BitcoinExchange::show() {
+	for (std::map<std::string, float>::const_iterator it = bitcoinData.begin(); it != bitcoinData.end(); ++it) {
+		std::cout << it->first << " => " << it->second << std::endl;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:41:53 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:12:06 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/17 04:53:41 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@ class BitcoinExchange {
 		void addStack(std::string key, float value);
 		float getClosestDate(const std::string& targetDate);
 
+		void show();
+
 	private :
 		std::map<std::string, float> bitcoinData;
 };
 
 void validityDate(std::string date);
-void parse(BitcoinExchange stack, std::string dataFile);
+void parse(BitcoinExchange *stack, std::string dataFile);

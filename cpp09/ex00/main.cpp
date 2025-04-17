@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:39:13 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/17 04:54:33 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,10 @@ void isValidFloat(const std::string& str, bool isForDataBase) {
 	if (iss >> c)
 		throw InvalideFormat("invalid value ->         ");
 
+	if (f < 0)
+		throw InvalideFormat("not a positive number -> ");
+
 	if (!isForDataBase) {
-		if (f < 0)
-			throw InvalideFormat("not a positive number -> ");
 		if (f > 1000)
 			throw InvalideFormat("too large a number    -> ");
 	}
@@ -90,7 +91,7 @@ void isValidFloat(const std::string& str, bool isForDataBase) {
 
 }
 
-void	parse(BitcoinExchange stack, std::string dataFile) {
+void	parse(BitcoinExchange *stack, std::string dataFile) {
 	std::ifstream file_in;
 	file_in.open(dataFile, std::ifstream::in);
 	if (file_in.fail()) {
@@ -116,8 +117,7 @@ void	parse(BitcoinExchange stack, std::string dataFile) {
 			} else
 				throw InvalideFormat("bad input ->             ");
 			isValidFloat(value, true);
-			std::cout << date << "|" << value << std::endl;
-			stack.addStack(date, static_cast<float>(std::atof(value.c_str())));
+			stack->addStack(date, std::atof(value.c_str()));
 		} catch (std::exception &e) {
 			std::cerr << dataFile << " Error : " << e.what() << line << std::endl;
 		}
@@ -159,12 +159,11 @@ int main (int ac, char **av) {
 			isValidFloat(value, false);
 			float btcRate = data.getClosestDate(date);
 			float result = btcRate * std::atof(value.c_str());
-			std::cout << date << " => " << value << " = " << result << std::endl;
+			std::cout << date << " =>" << value << " = " << result << std::endl;
 		} catch (std::exception &e) {
 			std::cerr << av[1] << " Error : " << e.what() << line << std::endl;
 		}
 	}
-
 
 	return 0;
 }
