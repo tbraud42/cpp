@@ -6,7 +6,7 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/04/03 13:36:52 by tao              ###   ########.fr        #
+#    Updated: 2025/04/17 05:40:30 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR		:= obj
 CXX			:= c++
 CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC			:= main.cpp .cpp\
+SRC			:= main.cpp RPN.cpp\
 
 OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

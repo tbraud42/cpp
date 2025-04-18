@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   .hpp                                               :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:41:53 by tao               #+#    #+#             */
-/*   Updated: 2025/04/03 13:36:31 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/17 05:37:11 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 #include <iostream>
 #include <string.h>
 #include <algorithm>
+#include <list>
 
-class Span {
+class RPN {
 	public :
-		Span();
-		Span(Span const &copie);
-		Span& operator=(Span const &copie);
-		~Span();
+		RPN();
+		RPN(RPN const &copie);
+		RPN& operator=(RPN const &copie);
+		~RPN();
+
+		void pushList(int obj);
+		int popList();
+		int sizeList();
+
+	private :
+		std::list<int>dataList;
 };
