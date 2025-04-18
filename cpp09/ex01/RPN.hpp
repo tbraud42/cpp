@@ -27,6 +27,7 @@ class RPN {
 		void pushList(int obj);
 		int popList();
 		int sizeList();
+		void show();
 
 	private :
 		std::list<int>dataList;

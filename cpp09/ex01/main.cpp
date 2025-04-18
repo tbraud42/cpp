@@ -16,6 +16,7 @@ bool calcul(RPN &rpn, char ope) {
 	int a;
 	int b;
 
+	rpn.show();
 	if (ope == '+') {
 		b = rpn.popList();
 		a = rpn.popList();
@@ -34,23 +35,49 @@ bool calcul(RPN &rpn, char ope) {
 		if (b == 0) {std::cout << "cannot divide by '0'" << std::endl; return true;}
 		rpn.pushList(a / b);
 	}
+	rpn.show();
 	return false;
 }
 
-void parse(RPN &rpn, char *ope) {
+bool findOperateur(RPN &rpn, char *input) {
 	int i = 0;
+	char *ope = strpbrk(input, "+-*/");
+
+	if (!ope) {std::cout << "Error missing operateur" << std::endl; return true;}
+	
+	if (calcul(rpn, ope[0])) {std::cout << "Error cannot divide by '0'" << std::endl; return true;}
+
+	ope[0] = ' ';
+	return false;
+}
+
+void parse(RPN &rpn, char *ope) {	 
+	int i = 0;
+
+	while (ope[i] == ' ') {i++;}
+	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i]));} 
+	else {std::cout << "Error" << std::endl; return ;}
+
+	while (ope[i] == ' ') {i++;}
+	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i]));} 
+	else {std::cout << "Error" << std::endl; return ;}
 
 	while (ope[i]) {
 		while (ope[i] == ' ')
 			i++;
-		if (ope[i] >= '0' && ope[i] <= '9') {
-			rpn.pushList(atoi(&ope[i]));
-			if (rpn.sizeList() == 3) {std::cout << "missing operateur" << std::endl; return ;}
-		} else if (ope[i] == '+' || ope[i] == '-' || ope[i] == '*' || ope[i] == '/') {
-			if (calcul(rpn, ope[i]))
+		if (rpn.sizeList() == 2) {
+			if (findOperateur(rpn, &ope[i]))
 				return ;
-		} else {std::cout << "unrecognized character '" << ope[i] << "'" << std::endl; return ;}
+			else
+				continue ;
+		} else if (ope[i] >= '0' && ope[i] <= '9') {
+			std::cout << i << std::endl;
+			rpn.pushList(atoi(&ope[i]));
+			rpn.show();
+		} else {std::cout << "Error" << std::endl; return ;}
+		i++;
 	}
+	std::cout << rpn.popList() << std::endl;
 }
 
 int main (int ac, char **av) {
@@ -61,7 +88,5 @@ int main (int ac, char **av) {
 
 	parse(rpn, av[1]);
 
-	// parser pour que a b + c * d +
-	// push(a) push(b) calcul(+) push(result) push(c) calcul(*) push(result) ....
 	return 0;
 }

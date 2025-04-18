@@ -43,3 +43,11 @@ int RPN::popList() {
 int RPN::sizeList() {
 	return dataList.size();
 }
+
+void RPN::show() {
+    std::cout << "Stack : ";
+    for (std::list<int>::const_iterator it = dataList.begin(); it != dataList.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+}
