@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 05:44:34 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/22 19:52:33 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int RPN::sizeList() {
 }
 
 void RPN::show() {
-    std::cout << "Stack : ";
-    for (std::list<int>::const_iterator it = dataList.begin(); it != dataList.end(); ++it) {
-        std::cout << *it << " ";
-    }
-    std::cout << std::endl;
+	std::cout << "Stack : ";
+	for (std::list<int>::const_iterator it = dataList.begin(); it != dataList.end(); ++it) {
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 }

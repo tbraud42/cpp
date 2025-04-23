@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 05:46:03 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/22 19:55:25 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ bool calcul(RPN &rpn, char ope) {
 	int a;
 	int b;
 
-	rpn.show();
+	if (rpn.sizeList() < 2) {std::cout << "Error" << std::endl; return true;}
+
 	if (ope == '+') {
 		b = rpn.popList();
 		a = rpn.popList();
@@ -35,7 +36,6 @@ bool calcul(RPN &rpn, char ope) {
 		if (b == 0) {std::cout << "cannot divide by '0'" << std::endl; return true;}
 		rpn.pushList(a / b);
 	}
-	rpn.show();
 	return false;
 }
 
@@ -43,40 +43,37 @@ bool findOperateur(RPN &rpn, char *input) {
 	int i = 0;
 	char *ope = strpbrk(input, "+-*/");
 
-	if (!ope) {std::cout << "Error missing operateur" << std::endl; return true;}
-	
-	if (calcul(rpn, ope[0])) {std::cout << "Error cannot divide by '0'" << std::endl; return true;}
+	if (calcul(rpn, ope[0])) {return true;}
 
 	ope[0] = ' ';
 	return false;
 }
 
-void parse(RPN &rpn, char *ope) {	 
+void parse(RPN &rpn, char *ope) {
 	int i = 0;
 
 	while (ope[i] == ' ') {i++;}
-	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i]));} 
+	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i])); i++;}
 	else {std::cout << "Error" << std::endl; return ;}
 
 	while (ope[i] == ' ') {i++;}
-	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i]));} 
+	if (!ope[i]) {std::cout << rpn.popList() << std::endl; return ;}
+	if (ope[i] >= '0' && ope[i] <= '9') {rpn.pushList(atoi(&ope[i])); i++;}
 	else {std::cout << "Error" << std::endl; return ;}
 
 	while (ope[i]) {
 		while (ope[i] == ' ')
 			i++;
-		if (rpn.sizeList() == 2) {
+		if (ope[i] >= '0' && ope[i] <= '9') {
+			rpn.pushList(atoi(&ope[i]));
+			ope[i] = ' ';
+		} else if (ope[i] == '+' || ope[i] == '-' || ope[i] == '*' || ope[i] == '/') {
 			if (findOperateur(rpn, &ope[i]))
 				return ;
-			else
-				continue ;
-		} else if (ope[i] >= '0' && ope[i] <= '9') {
-			std::cout << i << std::endl;
-			rpn.pushList(atoi(&ope[i]));
-			rpn.show();
 		} else {std::cout << "Error" << std::endl; return ;}
 		i++;
 	}
+	if (rpn.sizeList() != 1) {std::cout << "Error" << std::endl; return ;}
 	std::cout << rpn.popList() << std::endl;
 }
 
