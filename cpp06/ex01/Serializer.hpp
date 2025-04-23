@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 22:58:05 by tao               #+#    #+#             */
-/*   Updated: 2025/04/18 15:43:34 by tbraud           ###   ########.fr       */
+/*   Created: 2025/04/18 15:36:21 by tbraud            #+#    #+#             */
+/*   Updated: 2025/04/18 15:43:55 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
+#pragma once
 
-int main(int ac, char **av) {
+#include "Data.hpp"
 
-	Data newBorn;
-	uintptr_t tmp;
-	Data *result;
+class Serializer {
 
+    private:
+        Serializer();
+        Serializer(const Serializer&);
+        Serializer& operator=(const Serializer&);
+        ~Serializer();
 
-	std::cout << newBorn;
-	tmp = Serializer::serialize(&newBorn);
-	result = Serializer::deserialize(tmp);
-	std::cout << *result;
-	return 0;
-}
+    public :
+        static uintptr_t serialize(Data* ptr);
+        static Data* deserialize(uintptr_t raw);
+    
+};

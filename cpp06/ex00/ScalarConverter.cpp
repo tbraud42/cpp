@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:08:22 by tao               #+#    #+#             */
-/*   Updated: 2025/03/20 00:03:14 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/18 15:54:39 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,14 @@ ScalarConverter::~ScalarConverter() {
 	return ;
 }
 
+void ScalarConverter::convert(std::string input) {
+	stringToChar(input);
+	stringToInt(input);
+	stringToFloat(input);
+	stringToDouble(input);
+}
 
-bool is_all_num(char *tab) {
+bool is_all_num(std::string tab) {
 	int i = 0;
 
 	if (tab[i] == '-' || tab[i] == '+')
@@ -44,7 +50,7 @@ bool is_all_num(char *tab) {
 	return true;
 }
 
-void ScalarConverter::stringToChar(char *input) {
+void stringToChar(std::string input) {
 	std::cout << "char : ";
 
 	if (!input[0]) {
@@ -55,7 +61,7 @@ void ScalarConverter::stringToChar(char *input) {
 	if (is_all_num(input)) {
 		char *endptr;
 		errno = 0;
-		long value = std::strtol(input, &endptr, 10);
+		long value = std::strtol(input.c_str(), &endptr, 10);
 		if (errno == ERANGE || value < 0 || value > 127) {
 			std::cout << "impossible" << std::endl;
 		} else if (isprint(static_cast<int>(value))) {
@@ -70,7 +76,7 @@ void ScalarConverter::stringToChar(char *input) {
 	}
 }
 
-void ScalarConverter::stringToInt(char *input) {
+void stringToInt(std::string input) {
 	std::cout << "int : ";
 
 	if (!input[0]) {
@@ -80,7 +86,7 @@ void ScalarConverter::stringToInt(char *input) {
 
 	char *endptr;
 	errno = 0;
-	long value = std::strtol(input, &endptr, 10);
+	long value = std::strtol(input.c_str(), &endptr, 10);
 
 	if (errno == ERANGE || value < std::numeric_limits<int>::min() ||
 		value > std::numeric_limits<int>::max() || (*endptr != '\0' && *endptr != '.')) {
@@ -91,7 +97,7 @@ void ScalarConverter::stringToInt(char *input) {
 	std::cout << static_cast<int>(value) << std::endl;
 }
 
-void ScalarConverter::stringToFloat(char *input) {
+void stringToFloat(std::string input) {
 
 	std::cout << "float : ";
 
@@ -102,7 +108,7 @@ void ScalarConverter::stringToFloat(char *input) {
 
 	char *endptr;
 	errno = 0;
-	float value = static_cast<float>(std::strtod(input, &endptr));
+	float value = static_cast<float>(std::strtod(input.c_str(), &endptr));
 
 	if (errno == ERANGE || value < std::numeric_limits<float>::lowest() ||
 		value > std::numeric_limits<float>::max() || *endptr != '\0') {
@@ -115,7 +121,7 @@ void ScalarConverter::stringToFloat(char *input) {
 	std::cout << "f" << std::endl;
 }
 
-void ScalarConverter::stringToDouble(char *input) {
+void stringToDouble(std::string input) {
 
 	std::cout << "double : ";
 
@@ -126,7 +132,7 @@ void ScalarConverter::stringToDouble(char *input) {
 
 	char *endptr;
 	errno = 0;
-	double value = static_cast<double>(std::strtod(input, &endptr));
+	double value = static_cast<double>(std::strtod(input.c_str(), &endptr));
 
 	if (errno == ERANGE || value < std::numeric_limits<double>::lowest() ||
 		value > std::numeric_limits<double>::max() || *endptr != '\0') {

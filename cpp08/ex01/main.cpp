@@ -23,8 +23,8 @@ int main () {
 		sp.addNumber(9);
 		sp.addNumber(11);
 
-		std::cout << "Shortest span : " << sp.shortestSpan() << std::endl; // doit être 2 (11 - 9)
-		std::cout << "Longest span  : " << sp.longestSpan() << std::endl;  // doit être 17 - 3 = 14
+		std::cout << "Shortest span : " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span  : " << sp.longestSpan() << std::endl;
 
 		try {
 			sp.addNumber(42);
@@ -35,8 +35,8 @@ int main () {
 		Span rangeSpan(10);
 		rangeSpan.addRange(10, 15);
 
-		std::cout << "Shortest span (plage 10-15) : " << rangeSpan.shortestSpan() << std::endl; // 1
-		std::cout << "Longest span  (plage 10-15) : " << rangeSpan.longestSpan() << std::endl;  // 5
+		std::cout << "Shortest span (plage 10-15) : " << rangeSpan.shortestSpan() << std::endl;
+		std::cout << "Longest span  (plage 10-15) : " << rangeSpan.longestSpan() << std::endl;
 
 		Span copy = sp;
 		std::cout << "Copie - Shortest span : " << copy.shortestSpan() << std::endl;

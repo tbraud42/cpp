@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/15 22:58:05 by tao               #+#    #+#             */
-/*   Updated: 2025/04/18 15:43:34 by tbraud           ###   ########.fr       */
+/*   Created: 2025/04/18 15:39:55 by tbraud            #+#    #+#             */
+/*   Updated: 2025/04/18 15:40:24 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-int main(int ac, char **av) {
+Serializer::Serializer() {
+	return ;
+}
 
-	Data newBorn;
-	uintptr_t tmp;
-	Data *result;
+Serializer::Serializer(Serializer const &copie) {
+	return ;
+}
 
+Serializer &Serializer::operator=(Serializer const &copie) {
+	return *this;
+}
 
-	std::cout << newBorn;
-	tmp = Serializer::serialize(&newBorn);
-	result = Serializer::deserialize(tmp);
-	std::cout << *result;
-	return 0;
+Serializer::~Serializer() {
+	return ;
+}
+
+uintptr_t Serializer::serialize(Data *ptr) {
+	return reinterpret_cast<uintptr_t>(ptr);
+}
+
+Data *Serializer::deserialize(uintptr_t raw) {
+	return reinterpret_cast<Data*>(raw);
 }

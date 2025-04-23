@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
+#    By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/03/20 06:07:22 by tao              ###   ########.fr        #
+#    Updated: 2025/04/18 15:40:35 by tbraud           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ_DIR		:= obj
 CXX			:= c++
 CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC			:= Data.cpp main.cpp\
+SRC			:= Data.cpp main.cpp Serializer.cpp \
 
 OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

@@ -19,14 +19,14 @@ int main () {
 
 	try {
 		auto it = easyfind(vec, 30);
-		std::cout << "Trouvé dans vector : " << *it << std::endl;
+		std::cout << "Trouve dans vector : " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << "Erreur : " << e.what() << std::endl;
 	}
 
 	try {
 		auto it = easyfind(vec, 99);
-		std::cout << "Trouvé dans vector : " << *it << std::endl;
+		std::cout << "Trouve dans vector : " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << "Erreur : " << e.what() << std::endl;
 	}
@@ -35,14 +35,14 @@ int main () {
 
 	try {
 		auto it = easyfind(lst, 15);
-		std::cout << "Trouvé dans list : " << *it << std::endl;
+		std::cout << "Trouve dans list : " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << "Erreur : " << e.what() << std::endl;
 	}
 
 	try {
 		auto it = easyfind(lst, 85);
-		std::cout << "Trouvé dans list : " << *it << std::endl;
+		std::cout << "Trouve dans list : " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << "Erreur : " << e.what() << std::endl;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 06:03:07 by tao               #+#    #+#             */
-/*   Updated: 2025/03/20 06:15:56 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/18 15:43:14 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,3 @@ class Data {
 };
 
 std::ostream& operator<<(std::ostream& out, const Data& Data);
-
-uintptr_t serialize(Data* ptr);
-Data* deserialize(uintptr_t raw);

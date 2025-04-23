@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 06:03:07 by tao               #+#    #+#             */
-/*   Updated: 2025/03/21 05:19:04 by tao              ###   ########.fr       */
+/*   Updated: 2025/04/18 15:40:58 by tbraud           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 
 class Base {
 	public :
-		virtual void f() {}
+		virtual ~Base() {}
 };
-
 
 class A : public Base {
 

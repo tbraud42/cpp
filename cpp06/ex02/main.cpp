@@ -35,7 +35,7 @@ int main(int ac, char **av) {
 
 	delete base;
 
-	usleep(900000); // decalage
+	usleep(900000);
 
 	Base *ptr_the_second = generate();
 
