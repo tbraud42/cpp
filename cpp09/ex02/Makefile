@@ -17,7 +17,7 @@ OBJ_DIR		:= obj
 CXX			:= c++
 CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
-SRC			:= main.cpp .cpp\
+SRC			:= main.cpp PmergeMe.cpp\
 
 OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
