@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <deque>
 #include <vector>
+#include <chrono>
 
 class PmergeMe {
 	public :
@@ -24,4 +25,7 @@ class PmergeMe {
 		PmergeMe(PmergeMe const &copie);
 		PmergeMe& operator=(PmergeMe const &copie);
 		~PmergeMe();
+
+		std::vector<int> vec;
+		std::deque<int> deq;
 };
