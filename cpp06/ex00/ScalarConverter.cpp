@@ -58,6 +58,13 @@ void stringToChar(std::string input) {
 		return ;
 	}
 
+	int i = input.length() - 1;
+	while (i > 0 && input[i] == ' ') {i--;}
+
+	if (input[i] == 'f') {
+		input[i] = '\0';
+	}
+
 	if (is_all_num(input)) {
 		char *endptr;
 		errno = 0;
@@ -84,6 +91,13 @@ void stringToInt(std::string input) {
 		return;
 	}
 
+	int i = input.length() - 1;
+	while (i > 0 && input[i] == ' ') {i--;}
+
+	if (input[i] == 'f') {
+		input[i] = '\0';
+	}
+
 	char *endptr;
 	errno = 0;
 	long value = std::strtol(input.c_str(), &endptr, 10);
@@ -104,6 +118,15 @@ void stringToFloat(std::string input) {
 	if (!input[0]) {
 		std::cout << "impossible" << std::endl;
 		return;
+	}
+
+	if (input == "+inff" || input == "-inff" || input == "nanf") {std::cout << input << std::endl; return ;}
+
+	int i = input.length() - 1;
+	while (i > 0 && input[i] == ' ') {i--;}
+
+	if (input[i] == 'f') {
+		input[i] = '\0';
 	}
 
 	char *endptr;
@@ -128,6 +151,15 @@ void stringToDouble(std::string input) {
 	if (!input[0] ) {
 		std::cout << "impossible" << std::endl;
 		return;
+	}
+
+	if (input == "+inf" || input == "-inf" || input == "nan") {std::cout << input << std::endl; return ;}
+
+	int i = input.length() - 1;
+	while (i > 0 && input[i] == ' ') {i--;}
+
+	if (input[i] == 'f') {
+		input[i] = '\0';
 	}
 
 	char *endptr;

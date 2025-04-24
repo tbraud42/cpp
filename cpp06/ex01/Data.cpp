@@ -18,13 +18,15 @@ Data::Data() : i(93) {
 	return ;
 }
 
-Data::Data(Data const &copie) : i(93) {
-	tab[0] = "eat";
-	tab[1] = "vegetables";
+Data::Data(Data const &copie) {
+	*this = copie;
 	return ;
 }
 
 Data &Data::operator=(Data const &copie) {
+	this->i = copie.i;
+	this->tab[0] = copie.tab[0];
+	this->tab[1] = copie.tab[1];
 	return *this;
 }
 
@@ -33,6 +35,6 @@ Data::~Data() {
 }
 
 std::ostream &operator<<(std::ostream &out, const Data &Data) {
-	std::cout << Data.tab[0] << ' ' << Data.tab[1] << " , " << Data.i << std::endl;
+	std::cout << Data.tab[0] << ' ' << Data.tab[1] << " , " << Data.i;
 	return out;
 }

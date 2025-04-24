@@ -20,7 +20,6 @@ PmergeMe::PmergeMe(PmergeMe const &copie) {
 }
 
 PmergeMe &PmergeMe::operator=(PmergeMe const &copie) {
-	// TODO: insert return statement here
 	return *this;
 }
 

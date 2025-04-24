@@ -15,6 +15,8 @@
 #include <iostream>
 #include <string.h>
 #include <algorithm>
+#include <deque>
+#include <vector>
 
 class PmergeMe {
 	public :

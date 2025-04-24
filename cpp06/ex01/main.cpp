@@ -19,9 +19,9 @@ int main(int ac, char **av) {
 	Data *result;
 
 
-	std::cout << newBorn;
+	std::cout << newBorn << " adress = " << &newBorn << std::endl;
 	tmp = Serializer::serialize(&newBorn);
 	result = Serializer::deserialize(tmp);
-	std::cout << *result;
+	std::cout << *result << " adress = " << result << std::endl;
 	return 0;
 }
