@@ -16,11 +16,11 @@
 #include <string.h>
 #include <functional>
 
-template <typename T, typename U> void iter(T array, unsigned int length, U func) {
+template <typename T, typename U>
+void iter(T array, unsigned int length, U func) {
 	for (int i = 0; i < length; i++) {
 		func(array[i]);
 	}
-
 }
 
 template <typename T> void show(T array) {

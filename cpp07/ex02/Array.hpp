@@ -15,7 +15,8 @@
 #include <iostream>
 #include <string.h>
 
-template <class T> class Array {
+template <class T> 
+class Array {
 
 	public:
 		Array() : _array(nullptr), _size(0) {}
