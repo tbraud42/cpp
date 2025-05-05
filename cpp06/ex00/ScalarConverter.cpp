@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbraud <tbraud@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 01:08:22 by tao               #+#    #+#             */
-/*   Updated: 2025/04/18 15:54:39 by tbraud           ###   ########.fr       */
+/*   Updated: 2025/05/01 01:13:42 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ bool is_all_num(std::string tab) {
 
 	while (tab[i] && tab[i] >= '0' && tab[i] <= '9')
 		i++;
-
+	if (tab[i] == '.') {
+		i++;
+		while (tab[i] && tab[i] == '0')
+			i++;
+	}
 	if (tab[i])
 		return false;
 	return true;
@@ -61,7 +65,7 @@ void stringToChar(std::string input) {
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
 
-	if (input[i] == 'f') {
+	if (input[i] == 'f' && input.length() != 1) {
 		input[i] = '\0';
 	}
 
@@ -94,7 +98,7 @@ void stringToInt(std::string input) {
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
 
-	if (input[i] == 'f') {
+	if (input[i] == 'f' && input.length() != 1) {
 		input[i] = '\0';
 	}
 
@@ -125,7 +129,7 @@ void stringToFloat(std::string input) {
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
 
-	if (input[i] == 'f') {
+	if (input[i] == 'f' && input.length() != 1) {
 		input[i] = '\0';
 	}
 
@@ -158,7 +162,7 @@ void stringToDouble(std::string input) {
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
 
-	if (input[i] == 'f') {
+	if (input[i] == 'f' && input.length() != 1) {
 		input[i] = '\0';
 	}
 
