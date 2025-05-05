@@ -124,7 +124,8 @@ void stringToFloat(std::string input) {
 		return;
 	}
 
-	if (input == "+inff" || input == "-inff" || input == "nanf") {std::cout << input << std::endl; return ;}
+	if (input == "+inff" || input == "+inf") {std::cout << "+inff" << std::endl; return ;}
+	if (input == "-inff" || input == "-inf") {std::cout << "-inff" << std::endl; return ;}
 
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
@@ -157,7 +158,8 @@ void stringToDouble(std::string input) {
 		return;
 	}
 
-	if (input == "+inf" || input == "-inf" || input == "nan") {std::cout << input << std::endl; return ;}
+	if (input == "+inff" || input == "+inf") {std::cout << "+inf" << std::endl; return ;}
+	if (input == "-inff" || input == "-inf") {std::cout << "-inf" << std::endl; return ;}
 
 	int i = input.length() - 1;
 	while (i > 0 && input[i] == ' ') {i--;}
