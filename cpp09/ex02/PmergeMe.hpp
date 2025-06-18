@@ -6,27 +6,45 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:41:53 by tao               #+#    #+#             */
-/*   Updated: 2025/04/29 02:14:43 by tao              ###   ########.fr       */
+/*   Updated: 2025/05/27 19:21:53 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <string.h>
-#include <algorithm>
-#include <deque>
 #include <vector>
-#include <chrono>
-#include <iomanip>
+#include <deque>
+#include <string>
+#include <stdexcept>
+#include <algorithm>
+#include <ctime>
+#include <sstream>
 
 class PmergeMe {
-	public :
+	private:
+		std::vector<int> _vector;
+		std::deque<int> _deque;
+
+	public:
 		PmergeMe();
-		PmergeMe(PmergeMe const &copie);
-		PmergeMe& operator=(PmergeMe const &copie);
+		PmergeMe(const PmergeMe& other);
+		PmergeMe& operator=(const PmergeMe& other);
 		~PmergeMe();
 
-		std::vector<int> vec;
-		std::deque<int> deq;
+		bool parseInput(int ac, char** av);
+		void display() const;
+
+		std::vector<int> getVector() const;
+		std::deque<int> getDeque() const;
+
+		void sortVector();
+		void sortDeque();
+
+		template<typename Container>
+		Container generateJacobsthalIndices(size_t n);
+
+		void fordJohnsonSortVector(std::vector<int>& container);
+		void fordJohnsonSortDeque(std::deque<int>& container);
+
 };
