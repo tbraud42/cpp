@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:54:33 by tao              ###   ########.fr       */
+/*   Updated: 2025/06/18 20:23:32 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,25 @@ void validityDate(std::string date) {
 	std::string partOfDate[3];
 
 	if (!splitDate(date, partOfDate[0], partOfDate[1], partOfDate[2]))
-		throw InvalideFormat("bad input ->             ");
+		throw InvalideFormat("bad input             -> ");
 
 	int years = std::atoi(partOfDate[0].c_str());
 	int month = std::atoi(partOfDate[1].c_str());
 	int day = std::atoi(partOfDate[2].c_str());
 
 	if (years < 1 || month < 1 || month > 12 || day < 1)
-		throw InvalideFormat("bad input ->             ");
+		throw InvalideFormat("bad input             -> ");
 
 	int joursParMois[12] = { 31, 28, 31, 30, 31, 30,
 							 31, 31, 30, 31, 30, 31 };
 
 	if (month == 2 && leapYearDate(years)) {
 		if (day > 29)
-			throw InvalideFormat("bad input ->             ");
+			throw InvalideFormat("bad input             -> ");
 	}
 	else {
 		if (day > joursParMois[month - 1])
-			throw InvalideFormat("bad input ->             ");
+			throw InvalideFormat("bad input             -> ");
 	}
 }
 
@@ -75,10 +75,10 @@ void isValidFloat(const std::string& str, bool isForDataBase) {
 	char c;
 
 	if (!(iss >> f))
-		throw InvalideFormat("float overflow ->        ");
+		throw InvalideFormat("float overflow        -> ");
 
 	if (iss >> c)
-		throw InvalideFormat("invalid value ->         ");
+		throw InvalideFormat("invalid value         -> ");
 
 	if (f < 0)
 		throw InvalideFormat("not a positive number -> ");
@@ -110,12 +110,12 @@ void	parse(BitcoinExchange *stack, std::string dataFile) {
 			std::size_t pos = line.find(delimiter);
 			std::string date;
 			std::string value;
-			if (pos != std::string::npos && pos != 0 && pos != line.length() - 1) { // a verifier
+			if (pos != std::string::npos && pos != 0 && pos != line.length() - 1) {
 				date = line.substr(0, pos);
 				value = line.substr(pos + 1);
 				validityDate(date);
 			} else
-				throw InvalideFormat("bad input ->             ");
+				throw InvalideFormat("bad input             -> ");
 			isValidFloat(value, true);
 			stack->addStack(date, std::atof(value.c_str()));
 		} catch (std::exception &e) {
@@ -154,14 +154,14 @@ int main (int ac, char **av) {
 				value = line.substr(pos + 1);
 				validityDate(date);
 			} else
-				throw InvalideFormat("bad input ->             ");
-			std::cout << date << "|" << value << std::endl;
+				throw InvalideFormat("bad input             -> ");
+			std::cout << date << " |" << value << std::endl;
 			isValidFloat(value, false);
 			float btcRate = data.getClosestDate(date);
 			float result = btcRate * std::atof(value.c_str());
 			std::cout << date << " =>" << value << " = " << result << std::endl;
 		} catch (std::exception &e) {
-			std::cerr << av[1] << " Error : " << e.what() << line << std::endl;
+			std::cerr << "Error : " << e.what() << line << std::endl;
 		}
 	}
 

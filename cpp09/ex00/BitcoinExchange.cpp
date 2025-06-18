@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:54:57 by tao              ###   ########.fr       */
+/*   Updated: 2025/06/18 20:21:51 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ float BitcoinExchange::getClosestDate(const std::string& targetDate) {
 		return it->second;
 
 	if (it == bitcoinData.begin())
-		throw std::runtime_error("Erreur : aucune date connue avant " + targetDate);
+		throw std::runtime_error("no earlier date known -> " + targetDate);
 
 	--it;
 	return it->second;
