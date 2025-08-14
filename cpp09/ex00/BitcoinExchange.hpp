@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 00:41:53 by tao               #+#    #+#             */
-/*   Updated: 2025/04/17 04:53:41 by tao              ###   ########.fr       */
+/*   Created: 2025/06/18 20:39:01 by tao               #+#    #+#             */
+/*   Updated: 2025/06/19 00:26:56 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include <string.h>
-#include <fstream>
-#include <algorithm>
+#include <string>
 #include <map>
-#include <sstream>
+#include <fstream>
+#include <iostream>
 
 class InvalideFormat : public std::runtime_error {
 	public:
@@ -26,21 +24,18 @@ class InvalideFormat : public std::runtime_error {
 };
 
 class BitcoinExchange {
-	public :
-		BitcoinExchange();
-		BitcoinExchange(std::string dataFile);
-		BitcoinExchange(BitcoinExchange const &copie);
-		BitcoinExchange& operator=(BitcoinExchange const &copie);
+	private:
+		std::map<std::string, float> _rates;
+
+		void loadDatabase(const std::string &file);
+		bool isValidDate(const std::string &date) const;
+		bool isValidValue(const std::string &valueStr, float &value) const;
+		std::string trim(const std::string &str) const;
+		float getRateForDate(const std::string &date) const;
+
+	public:
+		BitcoinExchange(const std::string &filename);
 		~BitcoinExchange();
 
-		void addStack(std::string key, float value);
-		float getClosestDate(const std::string& targetDate);
-
-		void show();
-
-	private :
-		std::map<std::string, float> bitcoinData;
+		void processInput(const std::string &filename) const;
 };
-
-void validityDate(std::string date);
-void parse(BitcoinExchange *stack, std::string dataFile);

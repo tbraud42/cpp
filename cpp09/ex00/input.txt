@@ -1,15 +1,15 @@
 date | value
-2005-01-03 | 2
-011-01-03 | -1
-2011-01-03 | 0
-2011-01-03 | 1 dsqfdqsdsqdqs1
-2011-01-03 |
-2011-01-09 | 1
-2012-01-11 | -1
-2001-42-42
+2005-01-03 | 2 // erreur pas de date connu avant
+011-01-03 | -1 // erreur nombre negatif et pas de date avant, tu choisi l'erreur
+2011-01-03 | 0 // valide
+2011-01-03 | 1 dsqfdqsdsqdqs1 // erreur bad input de value
+2011-01-03 | // erreur manque la value
+2011-01-09 | 1 // pas d'erreur
+2012-01-11 | -1 // erreur negatif
+2001-42-42 // erreur manque le delimiteur
 
 2012-01-12 | 1
-2012-01-11 | 2147483648
-2012-01-11 | 2147483648
-2012-01- | 2147483648
-2010-10-10 | 1
+2012-01-11 | 2147483648 // erreur trop grand
+2012-01-11 | 2147483648 // erreur trop grand
+2012-01- | 2147483648  // erreur trop grand et mauvais format de date, tu chois
+2010-10-10 | 1 // pas d'erreur 

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/05/27 19:23:22 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/14 16:21:13 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& copie) {
 PmergeMe::~PmergeMe() {}
 
 
-bool PmergeMe::parseInput(int ac, char** av) {
+int PmergeMe::parseInput(int ac, char** av) {
 	int value;
 	int i = 1;
+	long int error = 0;
 
 	while (i < ac) {
 		std::string arg(av[i]);
@@ -37,18 +38,18 @@ bool PmergeMe::parseInput(int ac, char** av) {
 
 		if (!(iss >> value)) {
 			std::cerr << "Error: Invalid input: " << arg << std::endl;
-			return false;
+			error++;
 		}
 		if (value < 0) {
 			std::cerr << "Error: Negative numbers are not allowed: " << arg << std::endl;
-			return false;
+			error++;
 		}
 
 		_vector.push_back(value);
 		_deque.push_back(value);
 		++i;
 	}
-	return true;
+	return error;
 }
 
 void PmergeMe::display() const {
@@ -76,7 +77,7 @@ void PmergeMe::sortDeque() {
 template<typename Container>
 Container PmergeMe::generateJacobsthalIndices(size_t n) {
 	Container indices;
-	size_t j1 = 0, j2 = 1;
+	size_t j1 = 1, j2 = 1;
 	while (j2 < n) {
 		indices.push_back(j2);
 		size_t temp = j2;
@@ -120,7 +121,7 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
 	std::vector<bool> inserted(pend.size(), false);
 
 	for (size_t idx : jacobsthalIndices) {
-		if (idx < pend.size()) {
+		if (idx < pend.size() && !inserted[idx]) {
 			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
 			mainChain.insert(pos, pend[idx]);
 			inserted[idx] = true;
@@ -170,7 +171,7 @@ void PmergeMe::fordJohnsonSortDeque(std::deque<int>& container) {
 	std::deque<bool> inserted(pend.size(), false);
 
 	for (size_t idx : jacobsthalIndices) {
-		if (idx < pend.size()) {
+		if (idx < pend.size() && !inserted[idx]) {
 			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
 			mainChain.insert(pos, pend[idx]);
 			inserted[idx] = true;

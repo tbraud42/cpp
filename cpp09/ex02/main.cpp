@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/05/26 21:34:12 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/14 16:21:48 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int main(int ac, char** av) {
 
 	PmergeMe merge;
 
-	merge.parseInput(ac, av);
+	if(merge.parseInput(ac, av) != 0)
+		return 1;
 
 	std::cout << "befor :";
 	merge.display();
