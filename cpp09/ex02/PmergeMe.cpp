@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/08/14 16:21:13 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/15 18:42:01 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,12 @@ PmergeMe::PmergeMe(const PmergeMe& copie) : _vector(copie._vector), _deque(copie
 PmergeMe& PmergeMe::operator=(const PmergeMe& copie) {
 	if (this != &copie) {
 		_vector = copie._vector;
-		_deque = copie._deque;
+		_deque  = copie._deque;
 	}
 	return *this;
 }
 
 PmergeMe::~PmergeMe() {}
-
 
 int PmergeMe::parseInput(int ac, char** av) {
 	int value;
@@ -39,14 +38,13 @@ int PmergeMe::parseInput(int ac, char** av) {
 		if (!(iss >> value)) {
 			std::cerr << "Error: Invalid input: " << arg << std::endl;
 			error++;
-		}
-		if (value < 0) {
+		} else if (value < 0) {
 			std::cerr << "Error: Negative numbers are not allowed: " << arg << std::endl;
 			error++;
+		} else {
+			_vector.push_back(value);
+			_deque.push_back(value);
 		}
-
-		_vector.push_back(value);
-		_deque.push_back(value);
 		++i;
 	}
 	return error;
@@ -62,7 +60,7 @@ std::vector<int> PmergeMe::getVector() const {
 	return _vector;
 }
 
-std::deque<int> PmergeMe::getDeque() const {
+std::deque<int>  PmergeMe::getDeque() const {
 	return _deque;
 }
 
@@ -74,7 +72,7 @@ void PmergeMe::sortDeque() {
 	fordJohnsonSortDeque(_deque);
 }
 
-template<typename Container>
+template <typename Container>
 Container PmergeMe::generateJacobsthalIndices(size_t n) {
 	Container indices;
 	size_t j1 = 1, j2 = 1;
@@ -87,13 +85,11 @@ Container PmergeMe::generateJacobsthalIndices(size_t n) {
 	return indices;
 }
 
-
 void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
-	if (container.size() <= 1)
-		return;
+	if (container.size() <= 1) return;
 
-	std::vector<std::pair<int, int>> pairs;
-	auto it = container.begin();
+	std::vector< std::pair<int,int> > pairs;
+	std::vector<int>::iterator it = container.begin();
 	while (it != container.end()) {
 		int first = *it++;
 		if (it != container.end()) {
@@ -108,21 +104,23 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
 	}
 
 	std::vector<int> mainChain;
-	for (auto& p : pairs)
-		mainChain.push_back(p.first);
+	for (size_t i = 0; i < pairs.size(); ++i)
+		mainChain.push_back(pairs[i].first);
+
 	fordJohnsonSortVector(mainChain);
 
 	std::vector<int> pend;
-	for (auto& p : pairs)
-		if (p.first != p.second)
-			pend.push_back(p.second);
+	for (size_t i = 0; i < pairs.size(); ++i)
+		if (pairs[i].first != pairs[i].second)
+			pend.push_back(pairs[i].second);
 
-	std::vector<size_t> jacobsthalIndices = generateJacobsthalIndices<std::vector<size_t>>(pend.size());
-	std::vector<bool> inserted(pend.size(), false);
+	std::vector<size_t> jacobsthalIndices = generateJacobsthalIndices< std::vector<size_t> >(pend.size());
+	std::vector<bool>   inserted(pend.size(), false);
 
-	for (size_t idx : jacobsthalIndices) {
+	for (size_t j = 0; j < jacobsthalIndices.size(); ++j) {
+		size_t idx = jacobsthalIndices[j];
 		if (idx < pend.size() && !inserted[idx]) {
-			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
+			std::vector<int>::iterator pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
 			mainChain.insert(pos, pend[idx]);
 			inserted[idx] = true;
 		}
@@ -130,7 +128,7 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
 
 	for (size_t i = 0; i < pend.size(); ++i) {
 		if (!inserted[i]) {
-			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[i]);
+			std::vector<int>::iterator pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[i]);
 			mainChain.insert(pos, pend[i]);
 		}
 	}
@@ -139,11 +137,10 @@ void PmergeMe::fordJohnsonSortVector(std::vector<int>& container) {
 }
 
 void PmergeMe::fordJohnsonSortDeque(std::deque<int>& container) {
-	if (container.size() <= 1)
-		return;
+	if (container.size() <= 1) return;
 
-	std::deque<std::pair<int, int>> pairs;
-	auto it = container.begin();
+	std::deque< std::pair<int,int> > pairs;
+	std::deque<int>::iterator it = container.begin();
 	while (it != container.end()) {
 		int first = *it++;
 		if (it != container.end()) {
@@ -158,21 +155,23 @@ void PmergeMe::fordJohnsonSortDeque(std::deque<int>& container) {
 	}
 
 	std::deque<int> mainChain;
-	for (auto& p : pairs)
-		mainChain.push_back(p.first);
+	for (size_t i = 0; i < pairs.size(); ++i)
+		mainChain.push_back(pairs[i].first);
+
 	fordJohnsonSortDeque(mainChain);
 
 	std::deque<int> pend;
-	for (auto& p : pairs)
-		if (p.first != p.second)
-			pend.push_back(p.second);
+	for (size_t i = 0; i < pairs.size(); ++i)
+		if (pairs[i].first != pairs[i].second)
+			pend.push_back(pairs[i].second);
 
-	std::deque<size_t> jacobsthalIndices = generateJacobsthalIndices<std::deque<size_t>>(pend.size());
-	std::deque<bool> inserted(pend.size(), false);
+	std::deque<size_t> jacobsthalIndices = generateJacobsthalIndices< std::deque<size_t> >(pend.size());
+	std::vector<bool>  inserted(pend.size(), false);
 
-	for (size_t idx : jacobsthalIndices) {
+	for (size_t j = 0; j < jacobsthalIndices.size(); ++j) {
+		size_t idx = jacobsthalIndices[j];
 		if (idx < pend.size() && !inserted[idx]) {
-			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
+			std::deque<int>::iterator pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[idx]);
 			mainChain.insert(pos, pend[idx]);
 			inserted[idx] = true;
 		}
@@ -180,7 +179,7 @@ void PmergeMe::fordJohnsonSortDeque(std::deque<int>& container) {
 
 	for (size_t i = 0; i < pend.size(); ++i) {
 		if (!inserted[i]) {
-			auto pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[i]);
+			std::deque<int>::iterator pos = std::upper_bound(mainChain.begin(), mainChain.end(), pend[i]);
 			mainChain.insert(pos, pend[i]);
 		}
 	}

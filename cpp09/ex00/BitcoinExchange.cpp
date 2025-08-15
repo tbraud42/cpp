@@ -1,14 +1,14 @@
-// ************************************************************************** //
-//                                                                            //
-//                                                        :::      ::::::::   //
-//   BitcoinExchange.cpp                                :+:      :+:    :+:   //
-//                                                    +:+ +:+         +:+     //
-//   By: student42                                     +#+  +:+       +#+        //
-//                                                +#+#+#+#+#+   +#+           //
-//   Created: 2025/06/18 18:00:00 by student42          #+#    #+#             //
-//   Updated: 2025/06/18 18:00:00 by student42         ###   ########.fr       //
-//                                                                            //
-// ************************************************************************** //
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/15 18:29:17 by tao               #+#    #+#             */
+/*   Updated: 2025/08/15 18:45:41 by tao              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <sstream>
@@ -16,6 +16,32 @@
 #include <limits>
 #include <cstdlib>
 #include <ctime>
+#include <cctype>
+#include <iostream>
+#include <fstream>
+
+static bool parseIntFull(const std::string &s, int &out) {
+	if (s.empty()) return false;
+	size_t i = 0;
+	for (; i < s.size(); ++i) {
+		if (!std::isdigit(static_cast<unsigned char>(s[i]))) return false;
+	}
+	std::istringstream iss(s);
+	iss >> out;
+	return iss && iss.eof();
+}
+
+static bool parseFloatFull(const std::string &s, float &out) {
+	if (s.empty()) return false;
+	char *end = 0;
+	const char *c = s.c_str();
+	double v = std::strtod(c, &end);
+	if (end == c || *end != '\0') return false;
+	if (v > std::numeric_limits<float>::max() || v < -std::numeric_limits<float>::max())
+		return false;
+	out = static_cast<float>(v);
+	return true;
+}
 
 BitcoinExchange::BitcoinExchange(const std::string &filename) {
 	loadDatabase("data.csv");
@@ -25,7 +51,7 @@ BitcoinExchange::BitcoinExchange(const std::string &filename) {
 BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::loadDatabase(const std::string &file) {
-	std::ifstream db(file);
+	std::ifstream db(file.c_str());
 	std::string line;
 
 	if (!db.is_open()) {
@@ -37,63 +63,59 @@ void BitcoinExchange::loadDatabase(const std::string &file) {
 	while (std::getline(db, line)) {
 		std::istringstream iss(line);
 		std::string date, rateStr;
+
 		if (!std::getline(iss, date, ',')) {
 			std::cerr << "Warning: malformed line in database (missing date) => " << line << std::endl;
 			continue;
 		}
+
 		if (!std::getline(iss, rateStr)) {
 			std::cerr << "Warning: malformed line in database (missing rate) => " << line << std::endl;
 			continue;
 		}
-		try {
-			float rate = std::stof(rateStr);
-			_rates[date] = rate;
-		} catch (const std::exception& e) {
+
+		float rate;
+		if (!parseFloatFull(rateStr, rate)) {
 			std::cerr << "Warning: invalid rate value in database => " << rateStr << std::endl;
+			continue;
 		}
+		_rates[date] = rate;
 	}
 }
 
 bool BitcoinExchange::isValidDate(const std::string &date) const {
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
+
 	int y, m, d;
-	try {
-		y = std::stoi(date.substr(0, 4));
-		m = std::stoi(date.substr(5, 2));
-		d = std::stoi(date.substr(8, 2));
-	} catch (...) {
-		return false;
-	}
+	if (!parseIntFull(date.substr(0, 4), y)) return false;
+	if (!parseIntFull(date.substr(5, 2), m)) return false;
+	if (!parseIntFull(date.substr(8, 2), d)) return false;
+
 	if (y < 2009 || m < 1 || m > 12 || d < 1 || d > 31)
 		return false;
 
-	static const int daysInMonth[12] = {
-		31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-	};
-	if (d > daysInMonth[m - 1])
-		return false;
+	static const int days[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	int maxDays = days[m - 1];
+	bool leap = ( (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0) );
+
+	if (m == 2 && leap) maxDays = 29;
+	if (d > maxDays) return false;
+
 	return true;
 }
 
 bool BitcoinExchange::isValidValue(const std::string &valueStr, float &value) const {
-	try {
-		size_t idx;
-		value = std::stof(valueStr, &idx);
-		if (idx != valueStr.length()) {
-			std::cerr << "Error: invalid value => " << valueStr << std::endl;
-			return false;
-		}
-		if (value < 0) {
-			std::cerr << "Error: not a positive number -> " << value << std::endl;
-			return false;
-		}
-		if (value > 1000) {
-			std::cerr << "Error: too large a number -> " << value << std::endl;
-			return false;
-		}
-	} catch (const std::exception& e) {
+	if (!parseFloatFull(valueStr, value)) {
 		std::cerr << "Error: invalid value => " << valueStr << std::endl;
+		return false;
+	}
+	if (value < 0) {
+		std::cerr << "Error: not a positive number -> " << value << std::endl;
+		return false;
+	}
+	if (value > 1000) {
+		std::cerr << "Error: too large a number -> " << value << std::endl;
 		return false;
 	}
 	return true;
@@ -118,9 +140,8 @@ float BitcoinExchange::getRateForDate(const std::string &date) const {
 }
 
 void BitcoinExchange::processInput(const std::string &filename) const {
-	std::ifstream file(filename);
+	std::ifstream file(filename.c_str());
 	std::string line;
-	int lineNumber = 1;
 
 	if (!file.is_open()) {
 		std::cerr << "Error: could not open input file." << std::endl;
@@ -129,11 +150,10 @@ void BitcoinExchange::processInput(const std::string &filename) const {
 
 	std::getline(file, line);
 	while (std::getline(file, line)) {
-		++lineNumber;
 		if (line.empty())
 			continue;
 
-		size_t sep = line.find("|");
+		size_t sep = line.find('|');
 		if (sep == std::string::npos) {
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;

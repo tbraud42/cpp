@@ -6,20 +6,18 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/04/03 13:37:07 by tao              ###   ########.fr        #
+#    Updated: 2025/08/15 18:26:51 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= PmergeMe
-
-OBJ_DIR		:= obj
 
 CXX			:= c++
 CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
 
 SRC			:= main.cpp PmergeMe.cpp\
 
-OBJ			:= $(SRC:%.c=$(OBJ_DIR)/%.o)
+OBJ			:= $(SRC:%.c=%.o)
 
 GREEN		:= \033[1;32m
 NC			:= \033[0m
@@ -27,13 +25,8 @@ NC			:= \033[0m
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CXX) $(OBJ) -o $(NAME)
+	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
-
-$(OBJ_DIR)/%.o: $(SRC)
-	@mkdir -p $(OBJ_DIR)
-	@$(CXX) -o $@ -c $<
-	@printf "$(GREEN)✔️ $(notdir $<)$(NC) compiled\n"
 
 clean:
 	@rm -rf $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/04/22 19:55:25 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/15 18:31:17 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool calcul(RPN &rpn, char ope) {
 }
 
 bool findOperateur(RPN &rpn, char *input) {
-	int i = 0;
 	char *ope = strpbrk(input, "+-*/");
 
 	if (calcul(rpn, ope[0])) {return true;}

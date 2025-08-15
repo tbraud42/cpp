@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 14:48:31 by tao               #+#    #+#             */
-/*   Updated: 2025/04/22 19:52:33 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/15 18:33:28 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ RPN::RPN(RPN const &copie) {
 	return ;
 }
 
-RPN &RPN::operator=(RPN const &copie) {
+RPN& RPN::operator=(RPN const &copie) {
+	if (this != &copie) {
+		this->dataList = copie.dataList;
+	}
 	return *this;
 }
+
 
 RPN::~RPN() {
 	return ;
