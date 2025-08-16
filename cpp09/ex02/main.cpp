@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/08/15 18:40:32 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/16 13:41:48 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char** av) {
 	if (merge.parseInput(ac, av) != 0)
 		return 1;
 
-	std::cout << "before :";
+	std::cout << "Before :";
 	merge.display();
 	std::cout << std::endl;
 
@@ -43,7 +43,7 @@ int main(int ac, char** av) {
 	merge.sortDeque();
 	long long end_deq = getTime();
 
-	std::cout << "after :";
+	std::cout << "After :";
 	merge.display();
 	std::cout << std::endl;
 

@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:29:17 by tao               #+#    #+#             */
-/*   Updated: 2025/08/15 18:45:41 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/16 13:44:13 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void BitcoinExchange::loadDatabase(const std::string &file) {
 
 	if (!db.is_open()) {
 		std::cerr << "Error: could not open data file." << std::endl;
-		std::exit(EXIT_FAILURE);
+		std::runtime_error("Error: could not open data file.");
+		return ;
 	}
 
 	std::getline(db, line);
@@ -145,7 +146,8 @@ void BitcoinExchange::processInput(const std::string &filename) const {
 
 	if (!file.is_open()) {
 		std::cerr << "Error: could not open input file." << std::endl;
-		return;
+		std::runtime_error("Error: could not open input file.");
+		return ;
 	}
 
 	std::getline(file, line);
