@@ -6,34 +6,36 @@
 #    By: tao <tao@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/09 14:44:17 by tbraud            #+#    #+#              #
-#    Updated: 2025/08/15 18:25:51 by tao              ###   ########.fr        #
+#    Updated: 2025/08/24 21:40:46 by tao              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= btc
 
 CXX			:= c++
-CXXFLAGS	:= -Wextra -Wall -Werror -g -std=c++98
+CXXFLAGS	:= -Wall -Wextra -Werror -std=c++98
 
-SRC			:= main.cpp BitcoinExchange.cpp\
+RM			:= rm -f
 
-OBJ			:= $(SRC:%.c=%.o)
+SRCS		:= main.cpp BitcoinExchange.cpp\
 
-GREEN		:= \033[1;32m
-NC			:= \033[0m
+OBJS		:= $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
-	@printf "$(GREEN)✔️ $(NAME)$(NC) compiled\n"
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@printf "✔️ $(NAME) compiled\n"
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJ_DIR)
+	$(RM) $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
-	@printf "$(GREEN)✔️ $(NAME)$(NC) clean\n"
+	$(RM) $(NAME)
+	@printf "✔️ $(NAME) clean\n"
 
 re: fclean all
 

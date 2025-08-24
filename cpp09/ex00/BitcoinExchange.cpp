@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 18:29:17 by tao               #+#    #+#             */
-/*   Updated: 2025/08/16 13:44:13 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/24 21:45:56 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,22 @@ static bool parseFloatFull(const std::string &s, float &out) {
 	return true;
 }
 
+BitcoinExchange::BitcoinExchange() {}
+
 BitcoinExchange::BitcoinExchange(const std::string &filename) {
 	loadDatabase("data.csv");
 	processInput(filename);
+}
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
+	*this = other;
+}
+
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
+	if (this != &other) {
+		this->_rates = other._rates;
+	}
+	return *this;
 }
 
 BitcoinExchange::~BitcoinExchange() {}

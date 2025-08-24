@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:39:01 by tao               #+#    #+#             */
-/*   Updated: 2025/06/19 00:26:56 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/24 21:45:39 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ class BitcoinExchange {
 		float getRateForDate(const std::string &date) const;
 
 	public:
+		BitcoinExchange();
 		BitcoinExchange(const std::string &filename);
+		BitcoinExchange(const BitcoinExchange &other);
+		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
 		void processInput(const std::string &filename) const;
