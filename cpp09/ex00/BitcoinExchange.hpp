@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:39:01 by tao               #+#    #+#             */
-/*   Updated: 2025/08/24 21:45:39 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/26 20:12:05 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 #include <map>
 #include <fstream>
 #include <iostream>
-
-class InvalideFormat : public std::runtime_error {
-	public:
-		InvalideFormat(const std::string& message)
-			: std::runtime_error(message) {}
-};
 
 class BitcoinExchange {
 	private:

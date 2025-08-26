@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/08/15 18:31:17 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/26 20:12:30 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void parse(RPN &rpn, char *ope) {
 
 int main (int ac, char **av) {
 	if (ac == 1) {std::cout << "missing arguments" << std::endl; return 1;}
-	if (ac > 2) {std::cout << "to much arguments" << std::endl; return 1;}
+	if (ac > 2) {std::cout << "too much arguments" << std::endl; return 1;}
 
 	RPN rpn;
 
