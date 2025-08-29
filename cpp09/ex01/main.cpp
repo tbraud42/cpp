@@ -6,36 +6,54 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:40:38 by tao               #+#    #+#             */
-/*   Updated: 2025/08/26 20:12:30 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/29 19:03:43 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 bool calcul(RPN &rpn, char ope) {
-	int a;
-	int b;
+	if (rpn.sizeList() < 2) {
+		std::cout << "Error" << std::endl;
+		return true;
+	}
 
-	if (rpn.sizeList() < 2) {std::cout << "Error" << std::endl; return true;}
+	int b = rpn.popList();
+	int a = rpn.popList();
 
 	if (ope == '+') {
-		b = rpn.popList();
-		a = rpn.popList();
+		if ((b > 0 && a > std::numeric_limits<int>::max() - b) ||
+			(b < 0 && a < std::numeric_limits<int>::min() - b)) {
+			std::cout << "Error" << std::endl;
+			return true;
+		}
 		rpn.pushList(a + b);
 	} else if (ope == '-') {
-		b = rpn.popList();
-		a = rpn.popList();
+		if ((b < 0 && a > std::numeric_limits<int>::max() + b) ||
+			(b > 0 && a < std::numeric_limits<int>::min() + b)) {
+			std::cout << "Error" << std::endl;
+			return true;
+		}
 		rpn.pushList(a - b);
 	} else if (ope == '*') {
-		b = rpn.popList();
-		a = rpn.popList();
+		if (a != 0 && (b > std::numeric_limits<int>::max() / a ||
+			b < std::numeric_limits<int>::min() / a)) {
+			std::cout << "Error" << std::endl;
+			return true;
+		}
 		rpn.pushList(a * b);
-	} else {
-		b = rpn.popList();
-		a = rpn.popList();
-		if (b == 0) {std::cout << "cannot divide by '0'" << std::endl; return true;}
+	} else if (ope == '/') {
+		if (b == 0) {
+			std::cout << "Error" << std::endl;
+			return true;
+		}
+		if (a == std::numeric_limits<int>::min() && b == -1) {
+			std::cout << "Error" << std::endl;
+			return true;
+		}
 		rpn.pushList(a / b);
 	}
+
 	return false;
 }
 

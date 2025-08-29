@@ -6,7 +6,7 @@
 /*   By: tao <tao@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 00:41:53 by tao               #+#    #+#             */
-/*   Updated: 2025/08/16 13:40:39 by tao              ###   ########.fr       */
+/*   Updated: 2025/08/29 18:59:27 by tao              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <cstring>
 #include <algorithm>
 #include <list>
+#include <limits>
 
 class RPN {
 	public :
